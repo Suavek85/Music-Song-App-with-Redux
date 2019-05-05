@@ -2,6 +2,7 @@
   "name": "music-song-app-with-redux",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://suavek85.github.io/Music-Song-App-with-React/",
   "dependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
