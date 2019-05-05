@@ -1,15 +1,15 @@
 import { CHANGE_INPUT, REQUEST_MUSIC_SUCCESS, CARD_SHOWS, TOGGLE_CARD_FAV, ACTIVATE_LOADING } from "./constants";
 import { musicState } from "./components/Card/CardState";
 
-const initialState = {
+const initialStateSearch = {
   input: "Justin Bieber"
 };
 
-const newState = {
+const initialStateCard = {
   cardShow: true
 };
 
-export const searchMusic = (state = initialState, action = {}) => {
+export const searchMusic = (state = initialStateSearch, action = {}) => {
   switch (action.type) {
     case CHANGE_INPUT:
       return Object.assign({}, state, { input: action.payload });
@@ -38,7 +38,7 @@ export const handleMusicCards = (state = musicState, action = {}) => {
   }
 };
 
-export const isCardShow = (state = newState, action = {}) => {
+export const isCardShow = (state = initialStateCard, action = {}) => {
   switch (action.type) {
     case CARD_SHOWS:
       return Object.assign({}, state, {
@@ -49,35 +49,3 @@ export const isCardShow = (state = newState, action = {}) => {
   }
 };
 
-
-
-
-
-
-
-
-
-/*
-export const toggleCardFav = (state = musicState, action = {}) => {
-  switch (action.type) {
-    case TOGGLE_CARD_FAV:
-      return Object.assign({}, state, {
-        musicStateItemList: action.payload
-      });
-    default:
-      return state;
-  }
-};
-
-
-export const doFavClick = (state = musicState, action = {}) => {
-  switch (action.type) {
-    case CARD_FAV_CLICK:
-      return Object.assign({}, state, {
-        musicStateItemList: action.payload,
-      });
-    default:
-      return state;
-  }
-};
-*/
