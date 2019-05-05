@@ -1,0 +1,9 @@
+.h1-clip {
+    font-size: 76px;
+    background: -webkit-linear-gradient(left, red, #e4b8b7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
