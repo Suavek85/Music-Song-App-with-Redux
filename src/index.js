@@ -7,13 +7,15 @@ import thunkMiddleware from "redux-thunk";
 import "./index.css";
 import App from "./containers/App";
 import * as serviceWorker from "./serviceWorker";
-import { searchMusic, handleMusicCards, isCardShow } from "./reducers";
+import { searchMusic, searchCountry, handleMusicCards, isCardShow, handleFavs } from "./reducers";
 
 const logger = createLogger();
 const rootReducer = combineReducers({
   searchMusic,
+  searchCountry,
   handleMusicCards,
-  isCardShow
+  isCardShow,
+  handleFavs
 });
 const store = createStore(
   rootReducer,

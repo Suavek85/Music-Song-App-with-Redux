@@ -5,7 +5,7 @@ import CardList from "../components/Card/CardList";
 import FavList from "../components/Card/FavList";
 import Country from "../components/Country/Country";
 import Footer from "../components/Footer/Footer";
-import { genericUrl, specificUrl, specificCountryUrl } from "./API";
+import { specificCountryUrl } from "./API";
 import {
   countriesMain,
   countrySelected
@@ -19,38 +19,43 @@ import { connect } from "react-redux";
 import {
   setInput,
   requestMusic,
+  requestSpecificMusic,
   isCardShow,
   toggleCardFav,
-  activateLoading
+  activateLoading,
+  setInputCountry,
+  addFav,
+  removeFav
 } from "../actions";
 
 const mapStateToProps = state => {
   return {
     input: state.searchMusic.input,
+    inputCountry: state.searchCountry.inputCountry,
     musicStateItemList: state.handleMusicCards.musicStateItemList,
     isLoading: state.handleMusicCards.isLoading,
-    cardShow: state.isCardShow.cardShow
+    cardShow: state.isCardShow.cardShow,
+    favsArray: state.handleFavs.favsArray
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => dispatch(setInput(event.target.value)),
+    onSearchCountryChange: event =>
+      dispatch(setInputCountry(event.target.value)),
     onRequestMusic: () => dispatch(requestMusic()),
+    onRequestSpecificMusic: input => dispatch(requestSpecificMusic(input)),
     onCardShow: text => dispatch(isCardShow(text)),
     onToggleCardFav: text => dispatch(toggleCardFav(text)),
-    onActivateLoading: text => dispatch(activateLoading(text))
+    onActivateLoading: () => dispatch(activateLoading()),
+    onAddFav: text => dispatch(addFav(text)),
+    onRemoveFavs: text => dispatch(removeFav(text))
   };
 };
 
 class App extends Component {
   state = {
-    //input: "Justin Bieber",
-    //isLoading: true,
-    //cardsShow: true,
-    //music: musicState,
-    favsArray: [],
-    inputCountry: "",
     countries: countriesMain,
     countryBottom: countrySelected
   };
@@ -107,20 +112,15 @@ class App extends Component {
       };
 
       //conditionally pushing defined song to Favs
-      this.setState(prevState => {
-        const prevFavsArray = [...prevState.favsArray];
-        const alreadyFav = prevFavsArray.find(
-          el => el.id === parseFloat(songItem.id)
-        );
-        if (songItem.favClicked && alreadyFav === undefined) {
-          const newFavsArray = [...prevState.favsArray, songItem];
-          return {
-            favsArray: newFavsArray
-          };
-        }
-        return null;
-      });
-
+      const currentFavsArray = [...this.props.favsArray];
+      const alreadyFav = currentFavsArray.find(
+        el => el.id === parseFloat(songItem.id)
+      );
+      if (songItem.favClicked && alreadyFav === undefined) {
+        const newsFavsArray = [...currentFavsArray, songItem];
+        this.props.onAddFav(newsFavsArray);
+      }
+      //toggling icon
       const testsub = [...this.props.musicStateItemList];
       testsub[songIndex].favClicked = !testsub[songIndex].favClicked;
       this.props.onToggleCardFav(testsub);
@@ -128,46 +128,10 @@ class App extends Component {
   };
 
   onHeaderSearch = () => {
-    this.props.onActivateLoading(true);
-
-    /*
-
-    //fetch(specificUrl(this.state.input))
-    fetch(specificUrl(this.props.input))
-      .then(data => {
-        return data.json();
-      })
-      .then(res => {
-        if (res.message.header.available !== 0) {
-          this.props.onCardShow(true);
-
-          //this.setState({
-          //cardsShow: true
-          //});
-          //this.setState({ isLoading: false });
-
-          this.setState(prevState => {
-            const onloadMusic = prevState.music;
-            onloadMusic.isLoading = false;
-            onloadMusic.musicStateItemList.forEach((el, i) => {
-              el.track = res.message.body.track_list[i].track.track_name;
-              el.album = res.message.body.track_list[i].track.album_name;
-              el.artist = res.message.body.track_list[i].track.artist_name;
-              el.id = res.message.body.track_list[i].track.track_id;
-              el.favClicked = false;
-            });
-            return {
-              music: onloadMusic
-            };
-          });
-          scrollDownSmooth();
-        }
-      })
-      .catch(error => {
-        console.log("Cannot load music cards");
-      });
-
-      */
+    this.props.onActivateLoading();
+    this.props.onCardShow(true);
+    this.props.onRequestSpecificMusic(this.props.input);
+    scrollDownSmooth();
   };
 
   onCloseFavs = () => {
@@ -175,37 +139,28 @@ class App extends Component {
   };
 
   onShowFavs = () => {
-    if (this.state.favsArray.length === 0) {
+    if (this.props.favsArray.length === 0) {
       return;
     }
     this.props.onCardShow(false);
     scrollDownSmooth();
   };
 
-  onRemoveFavs = event => {
+  onRemoveFavsHandler = event => {
+    //removing songs from Favs
     const target = event.target.dataset.id;
-    const removeIndex = this.state.favsArray.findIndex(
+    const currentFavsArray = [...this.props.favsArray];
+    const removeFavIndex = currentFavsArray.findIndex(
       el => el.id === parseFloat(target)
     );
-    this.setState(prevState => {
-      const prevFavsArray = [...prevState.favsArray];
-      prevFavsArray.splice(removeIndex, 1);
-      return {
-        favsArray: prevFavsArray
-      };
-    });
-  };
-
-  onCountrySearchChange = event => {
-    this.setState({
-      inputCountry: event.target.value
-    });
+    currentFavsArray.splice(removeFavIndex, 1);
+    this.props.onRemoveFavs(currentFavsArray);
   };
 
   onCountryButtonClick = () => {
     //converting country name to country code
     const countryIndex = countryCodeArr.findIndex(el => {
-      return el.name === this.state.inputCountry;
+      return el.name === this.props.inputCountry;
     });
     if (countryIndex === -1) {
       return;
@@ -282,19 +237,14 @@ class App extends Component {
     });
 
     //conditionally pushing defined song to Favs
-    this.setState(prevState => {
-      const prevFavArray = prevState.favsArray;
-      const alreadyFav = prevFavArray.find(
-        el => el.id === parseFloat(songItem.id)
-      );
-      if (alreadyFav === undefined) {
-        prevFavArray.push(songItem);
-        return {
-          favsArray: prevFavArray
-        };
-      }
-      return null;
-    });
+    const currentFavsArray = [...this.props.favsArray];
+    const alreadyFav = currentFavsArray.find(
+      el => el.id === parseFloat(songItem.id)
+    );
+    if (songItem.favClicked && alreadyFav === undefined) {
+      const newsFavsArray = [...currentFavsArray, songItem];
+      this.props.onAddFav(newsFavsArray);
+    }
   };
 
   onSelectedCountryFavClick = event => {
@@ -329,28 +279,27 @@ class App extends Component {
       };
     });
     //conditionally pushing defined song to Favs
-    this.setState(prevState => {
-      const prevFavArray = prevState.favsArray;
-      const alreadyFav = prevFavArray.find(
-        el => el.id === parseFloat(songItem.id)
-      );
-      if (alreadyFav === undefined) {
-        prevFavArray.push(songItem);
-        return {
-          favsArray: prevFavArray
-        };
-      }
-      return null;
-    });
+    const currentFavsArray = [...this.props.favsArray];
+    const alreadyFav = currentFavsArray.find(
+      el => el.id === parseFloat(songItem.id)
+    );
+    if (songItem.favClicked && alreadyFav === undefined) {
+      const newsFavsArray = [...currentFavsArray, songItem];
+      this.props.onAddFav(newsFavsArray);
+    }
   };
 
   render() {
-    const { input, onSearchChange, musicStateItemList, isLoading } = this.props;
     const {
+      input,
+      onSearchChange,
+      onSearchCountryChange,
+      musicStateItemList,
+      isLoading,
       favsArray,
-      countries,
-      countryBottom
-    } = this.state;
+      cardShow
+    } = this.props;
+    const { countries, countryBottom } = this.state;
     return (
       <div className="App">
         <Header
@@ -369,14 +318,14 @@ class App extends Component {
         <FavList
           onFavClick={this.onFavClick}
           closeFavs={this.onCloseFavs}
-          removeFavs={this.onRemoveFavs}
-          cardsShow={this.props.cardShow}
+          removeFavs={this.onRemoveFavsHandler}
+          cardsShow={cardShow}
           music={favsArray}
         />
         <Country
           countries={countries}
           buttonClick={this.onCountryButtonClick}
-          searchChange={this.onCountrySearchChange}
+          searchChange={onSearchCountryChange}
           countryBottom={countryBottom}
           onCountryFavClick={this.onCountryFavClick}
           onSelectedCountryFavClick={this.onSelectedCountryFavClick}
