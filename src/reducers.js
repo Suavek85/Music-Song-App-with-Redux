@@ -7,9 +7,15 @@ import {
   TOGGLE_CARD_FAV,
   ADD_FAV,
   REMOVE_FAV,
-  ACTIVATE_LOADING
+  ACTIVATE_LOADING,
+  REQUEST_COUNTRY_SUCCESS
 } from "./constants";
-import { musicState } from "./components/Card/CardState";
+import {
+  musicState
+} from "./components/Card/CardState";
+import {
+  countriesMain
+} from './components/Country/CountriesStateStyle';
 
 const initialStateSearch = {
   input: "Justin Bieber"
@@ -31,12 +37,34 @@ export const handleMusicCards = (state = musicState, action = {}) => {
   switch (action.type) {
     case REQUEST_MUSIC_SUCCESS:
       return Object.assign({}, state, {
-        musicStateItemList: action.payload,
+        musicStateItemList: state.musicStateItemList
+          .map((el, i) => {
+            return {
+              ...el,
+              track: action.payload.message.body.track_list[i].track.track_name,
+              album: action.payload.message.body.track_list[i].track.album_name,
+              artist: action.payload.message.body.track_list[i].track.artist_name,
+              id: action.payload.message.body.track_list[i].track.track_id,
+              favClicked: false,
+              addedToFav: false,
+            }
+          }),
         isLoading: false
       });
-    case REQUEST_MUSIC_SPECIFIC_SUCCESS:
+      case REQUEST_MUSIC_SPECIFIC_SUCCESS:
       return Object.assign({}, state, {
-        musicStateItemList: action.payload,
+        musicStateItemList: state.musicStateItemList
+          .map((el, i) => {
+            return {
+              ...el,
+              track: action.payload.message.body.track_list[i].track.track_name,
+              album: action.payload.message.body.track_list[i].track.album_name,
+              artist: action.payload.message.body.track_list[i].track.artist_name,
+              id: action.payload.message.body.track_list[i].track.track_id,
+              favClicked: false,
+              addedToFav: false,
+            }
+          }),
         isLoading: false
       });
     case TOGGLE_CARD_FAV:
@@ -51,6 +79,15 @@ export const handleMusicCards = (state = musicState, action = {}) => {
       return state;
   }
 };
+
+export const handleCountries = (state = countriesMain, action = {}) => {
+  switch (action.type) {
+//deal with that
+    default:
+      return state;
+  }
+};
+
 
 export const handleFavs = (state = initialFavArray, action = {}) => {
   switch (action.type) {
@@ -81,7 +118,9 @@ export const isCardShow = (state = initialStateCard, action = {}) => {
 export const searchMusic = (state = initialStateSearch, action = {}) => {
   switch (action.type) {
     case CHANGE_INPUT:
-      return Object.assign({}, state, { input: action.payload });
+      return Object.assign({}, state, {
+        input: action.payload
+      });
     default:
       return state;
   }
@@ -90,8 +129,12 @@ export const searchMusic = (state = initialStateSearch, action = {}) => {
 export const searchCountry = (state = initialStateCountry, action = {}) => {
   switch (action.type) {
     case CHANGE_INPUT_COUNTRY:
-      return Object.assign({}, state, { inputCountry: action.payload });
+      return Object.assign({}, state, {
+        inputCountry: action.payload
+      });
     default:
       return state;
   }
 };
+
+

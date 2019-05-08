@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import Header from "../components/Header/Header";
 import CardList from "../components/Card/CardList";
 import FavList from "../components/Card/FavList";
@@ -25,7 +24,8 @@ import {
   activateLoading,
   setInputCountry,
   addFav,
-  removeFav
+  removeFav,
+  requestCountry
 } from "../actions";
 
 const mapStateToProps = state => {
@@ -35,7 +35,8 @@ const mapStateToProps = state => {
     musicStateItemList: state.handleMusicCards.musicStateItemList,
     isLoading: state.handleMusicCards.isLoading,
     cardShow: state.isCardShow.cardShow,
-    favsArray: state.handleFavs.favsArray
+    favsArray: state.handleFavs.favsArray,
+    countries: state.handleCountries.countries
   };
 };
 
@@ -50,7 +51,8 @@ const mapDispatchToProps = dispatch => {
     onToggleCardFav: text => dispatch(toggleCardFav(text)),
     onActivateLoading: () => dispatch(activateLoading()),
     onAddFav: text => dispatch(addFav(text)),
-    onRemoveFavs: text => dispatch(removeFav(text))
+    onRemoveFavs: text => dispatch(removeFav(text)),
+    onRequestCountries: () => dispatch(requestCountry())
   };
 };
 
@@ -63,7 +65,9 @@ class App extends Component {
   componentDidMount() {
     this.props.onRequestMusic();
     this.props.onCardShow(true);
+    this.props.onRequestCountries();
 
+    
     // LOAD 3 COUNTRIES SONGS
     const urlArray = [
       specificCountryUrl("br"),
@@ -91,6 +95,7 @@ class App extends Component {
           });
         });
     });
+
   }
 
   onCardFavClick = event => {
@@ -158,6 +163,7 @@ class App extends Component {
   };
 
   onCountryButtonClick = () => {
+    
     //converting country name to country code
     const countryIndex = countryCodeArr.findIndex(el => {
       return el.name === this.props.inputCountry;
@@ -297,9 +303,13 @@ class App extends Component {
       musicStateItemList,
       isLoading,
       favsArray,
-      cardShow
+      cardShow,
+      //countries
     } = this.props;
-    const { countries, countryBottom } = this.state;
+    const {
+      countries,
+      countryBottom
+    } = this.state;
     return (
       <div className="App">
         <Header

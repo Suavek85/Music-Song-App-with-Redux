@@ -7,36 +7,10 @@ import {
   REQUEST_MUSIC_SPECIFIC_SUCCESS,
   CHANGE_INPUT_COUNTRY,
   ADD_FAV,
-  REMOVE_FAV
+  REMOVE_FAV,
+  REQUEST_COUNTRY_SUCCESS
 } from "./constants";
-
-const apiKey = "22d91306931ee5a074eb08a71662cc98";
-const genericUrl = `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=justin bieber&page_size=3&page=1&s_track_rating=desc & apikey=${apiKey}`;
-export const specificUrl = input => {
-  return `https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_artist=${input}&page_size=3&page=1&s_track_rating=desc & apikey=${apiKey}`;
-};
-
-const musicStateItem = el => {
-  return {
-    track: "Loading...",
-    album: "Loading...",
-    artist: "Loading...",
-    favClicked: false,
-    addedToFav: false,
-    id: el
-  };
-};
-
-const musicStateItemList = [
-  musicStateItem(0),
-  musicStateItem(1),
-  musicStateItem(2)
-];
-
-const newmusicState = {
-  isLoading: true,
-  musicStateItemList: musicStateItemList
-};
+import {genericUrl, specificUrl, specificCountryUrl, urlArray} from './containers/API'
 
 export const setInput = text => ({
   type: CHANGE_INPUT,
@@ -53,19 +27,12 @@ export const requestMusic = () => dispatch => {
     .then(data => {
       return data.json();
     })
-    .then(res => {
-      if (res.message.header.available !== 0) {
-        newmusicState.musicStateItemList.forEach((el, i) => {
-          el.track = res.message.body.track_list[i].track.track_name;
-          el.album = res.message.body.track_list[i].track.album_name;
-          el.artist = res.message.body.track_list[i].track.artist_name;
-          el.id = res.message.body.track_list[i].track.track_id;
-          el.favClicked = false;
-          el.addedToFav = false;
-        });
-        dispatch({ type: REQUEST_MUSIC_SUCCESS, payload: musicStateItemList });
-      }
+  .then(res => {
+    dispatch({
+      type: REQUEST_MUSIC_SUCCESS,
+      payload: res
     });
+  });
 };
 
 export const requestSpecificMusic = input => dispatch => {
@@ -74,21 +41,24 @@ export const requestSpecificMusic = input => dispatch => {
       return data.json();
     })
     .then(res => {
-      if (res.message.header.available !== 0) {
-        newmusicState.musicStateItemList.forEach((el, i) => {
-          el.track = res.message.body.track_list[i].track.track_name;
-          el.album = res.message.body.track_list[i].track.album_name;
-          el.artist = res.message.body.track_list[i].track.artist_name;
-          el.id = res.message.body.track_list[i].track.track_id;
-          el.favClicked = false;
-          el.addedToFav = false;
-        });
-        dispatch({
-          type: REQUEST_MUSIC_SPECIFIC_SUCCESS,
-          payload: musicStateItemList
-        });
-      }
+      dispatch({
+        type: REQUEST_MUSIC_SPECIFIC_SUCCESS,
+        payload: res
+      });
     });
+};
+
+export const requestCountry = (text) => dispatch => {
+    fetch(specificCountryUrl(text))
+      .then(data => {
+        return data.json();
+      })
+      .then(res => {
+        dispatch({
+          type: REQUEST_COUNTRY_SUCCESS,
+          payload: res 
+        });
+      });
 };
 
 export const isCardShow = text => ({
