@@ -5,9 +5,9 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import "./index.css";
-import App from "./containers/App";
+import App from "./containers/App/App";
 import * as serviceWorker from "./serviceWorker";
-import { searchMusic, searchCountry, handleMusicCards, isCardShow, handleFavs,handleCountries  } from "./reducers";
+import { searchMusic, searchCountry, handleMusicCards, isCardShow, handleFavs, handleCountries  } from "./reducers";
 
 const logger = createLogger();
 const rootReducer = combineReducers({

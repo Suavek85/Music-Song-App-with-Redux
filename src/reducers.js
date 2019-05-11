@@ -82,7 +82,10 @@ export const handleMusicCards = (state = musicState, action = {}) => {
 
 export const handleCountries = (state = countriesMain, action = {}) => {
   switch (action.type) {
-//deal with that
+    case REQUEST_COUNTRY_SUCCESS:
+      return Object.assign({}, state, {
+        //countries: action.payload
+      });
     default:
       return state;
   }

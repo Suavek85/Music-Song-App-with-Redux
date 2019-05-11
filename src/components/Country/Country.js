@@ -3,6 +3,7 @@ import CountriesList from "./CountriesList";
 import CountryList from "./CountryList";
 
 const Country = (props) => {
+
   return (
     <div>
       <CountriesList countries={props.countries} onCountryFavClick={props.onCountryFavClick} />

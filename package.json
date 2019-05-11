@@ -7,6 +7,7 @@
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "gh-pages": "^2.0.1",
+    "immutability-helper": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-epic-spinners": "^0.3.0",

@@ -56,7 +56,7 @@ export const requestCountry = (text) => dispatch => {
       .then(res => {
         dispatch({
           type: REQUEST_COUNTRY_SUCCESS,
-          payload: res 
+          //payload: res 
         });
       });
 };

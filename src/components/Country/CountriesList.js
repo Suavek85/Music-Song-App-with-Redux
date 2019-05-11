@@ -2,6 +2,8 @@ import React from "react";
 import CountryItem from "./CountryItem/CountryItem";
 
 const CountriesList = props => {
+  console.log(props.countries)
+  
   return (
     <div>
       <h1 id='charts' className="f1 lh-title gray">
