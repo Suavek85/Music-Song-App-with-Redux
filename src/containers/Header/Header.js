@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Header.css";
-import Background from '../../components/Images/music-black-white.jpg';
+import Background from "../../components/Images/music-black-white.jpg";
 import PinkMusicIcon from "../../components/Icons/Logo/Logo";
 import Search from "../../components/Search/Search";
 import FavBadge from "../../components/FavBadge/FavBadge";

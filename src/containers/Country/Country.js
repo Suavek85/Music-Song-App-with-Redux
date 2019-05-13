@@ -17,7 +17,8 @@ import {
   activateLoading,
   setInputCountry,
   addFav,
-  removeFav
+  removeFav,
+  requestCountry
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -27,7 +28,8 @@ const mapStateToProps = state => {
     musicStateItemList: state.handleMusicCards.musicStateItemList,
     isLoading: state.handleMusicCards.isLoading,
     cardShow: state.isCardShow.cardShow,
-    favsArray: state.handleFavs.favsArray
+    favsArray: state.handleFavs.favsArray,
+    countriesMain: state.handleCountries,
   };
 };
 
@@ -41,7 +43,8 @@ const mapDispatchToProps = dispatch => {
     onToggleCardFav: text => dispatch(toggleCardFav(text)),
     onActivateLoading: () => dispatch(activateLoading()),
     onAddFav: text => dispatch(addFav(text)),
-    onRemoveFavs: text => dispatch(removeFav(text))
+    onRemoveFavs: text => dispatch(removeFav(text)),
+    onRequestCountries: (text) => dispatch(requestCountry(text))
   };
 };
 
@@ -52,38 +55,11 @@ class Country extends Component {
   };
 
   componentDidMount() {
-    // LOAD 3 COUNTRIES SONGS
-    const urlArray = [
-      specificCountryUrl("br"),
-      specificCountryUrl("us"),
-      specificCountryUrl("es")
-    ];
-
-    urlArray.forEach((el, i) => {
-      fetch(el)
-        .then(data => {
-          return data.json();
-        })
-        .then(res => {
-          this.setState(prevState => {
-            const newCountries = prevState.countries;
-            newCountries[i].topSongs.forEach((el, i) => {
-              el.track = res.message.body.track_list[i].track.track_name;
-              el.album = res.message.body.track_list[i].track.album_name;
-              el.artist = res.message.body.track_list[i].track.artist_name;
-              el.id = res.message.body.track_list[i].track.track_id;
-            });
-            return {
-              countries: newCountries
-            };
-          });
-        });
-    });
+    this.props.onRequestCountries('br');
   }
 
   onCountryButtonClick = () => {
-    console.log("dziala jak natura chciala");
-
+  
     //converting country name to country code
     const countryIndex = countryCodeArr.findIndex(el => {
       return el.name === this.props.inputCountry;
@@ -220,7 +196,7 @@ class Country extends Component {
     return (
       <div>
         <CountriesList
-          countries={countries}
+          countries={this.props.countriesMain}
           onCountryFavClick={this.onCountryFavClick}
         />
         <CountryList

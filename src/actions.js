@@ -22,12 +22,35 @@ export const setInputCountry = text => ({
   payload: text
 });
 
+/*
+export const requestCountry = text => ({
+  type: REQUEST_COUNTRY_SUCCESS,
+  payload: text
+});
+*/
+
+
+export const requestCountry = (text) => dispatch => {
+  fetch(specificCountryUrl(text))
+    .then(data => {
+      return data.json();
+    })
+    .then(res => {
+      dispatch({
+        type: REQUEST_COUNTRY_SUCCESS,
+        payload: res 
+      });
+    });
+};
+
+
 export const requestMusic = () => dispatch => {
   fetch(genericUrl)
     .then(data => {
       return data.json();
     })
   .then(res => {
+    console.log(res)
     dispatch({
       type: REQUEST_MUSIC_SUCCESS,
       payload: res
@@ -46,19 +69,6 @@ export const requestSpecificMusic = input => dispatch => {
         payload: res
       });
     });
-};
-
-export const requestCountry = (text) => dispatch => {
-    fetch(specificCountryUrl(text))
-      .then(data => {
-        return data.json();
-      })
-      .then(res => {
-        dispatch({
-          type: REQUEST_COUNTRY_SUCCESS,
-          //payload: res 
-        });
-      });
 };
 
 export const isCardShow = text => ({
