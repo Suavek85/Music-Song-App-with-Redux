@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => {
     onActivateLoading: () => dispatch(activateLoading()),
     onAddFav: text => dispatch(addFav(text)),
     onRemoveFavs: text => dispatch(removeFav(text)),
-    onRequestCountries: (text) => dispatch(requestCountry(text))
+    onRequestCountries: (text, no) => dispatch(requestCountry(text,no))
   };
 };
 
@@ -55,7 +55,9 @@ class Country extends Component {
   };
 
   componentDidMount() {
-    this.props.onRequestCountries('br');
+    this.props.onRequestCountries('br', 0);
+    this.props.onRequestCountries('us', 1);
+    this.props.onRequestCountries('es', 2);
   }
 
   onCountryButtonClick = () => {
@@ -191,12 +193,12 @@ class Country extends Component {
   };
 
   render() {
-    const { onSearchCountryChange } = this.props;
-    const { countries, countryBottom } = this.state;
+    const { onSearchCountryChange, countriesMain } = this.props;
+    const { countryBottom } = this.state;
     return (
       <div>
         <CountriesList
-          countries={this.props.countriesMain}
+          countries={countriesMain}
           onCountryFavClick={this.onCountryFavClick}
         />
         <CountryList

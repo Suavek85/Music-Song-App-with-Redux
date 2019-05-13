@@ -10,7 +10,7 @@ import {
   REMOVE_FAV,
   REQUEST_COUNTRY_SUCCESS
 } from "./constants";
-import {genericUrl, specificUrl, specificCountryUrl, urlArray} from './containers/API'
+import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
 export const setInput = text => ({
   type: CHANGE_INPUT,
@@ -22,15 +22,7 @@ export const setInputCountry = text => ({
   payload: text
 });
 
-/*
-export const requestCountry = text => ({
-  type: REQUEST_COUNTRY_SUCCESS,
-  payload: text
-});
-*/
-
-
-export const requestCountry = (text) => dispatch => {
+export const requestCountry = (text, no) => dispatch => {
   fetch(specificCountryUrl(text))
     .then(data => {
       return data.json();
@@ -38,24 +30,23 @@ export const requestCountry = (text) => dispatch => {
     .then(res => {
       dispatch({
         type: REQUEST_COUNTRY_SUCCESS,
-        payload: res 
+        payload: { res, no }
       });
     });
 };
-
 
 export const requestMusic = () => dispatch => {
   fetch(genericUrl)
     .then(data => {
       return data.json();
     })
-  .then(res => {
-    console.log(res)
-    dispatch({
-      type: REQUEST_MUSIC_SUCCESS,
-      payload: res
+    .then(res => {
+      console.log(res);
+      dispatch({
+        type: REQUEST_MUSIC_SUCCESS,
+        payload: res
+      });
     });
-  });
 };
 
 export const requestSpecificMusic = input => dispatch => {

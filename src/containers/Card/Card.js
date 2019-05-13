@@ -36,6 +36,12 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Card extends Component {
+
+  componentDidMount() {
+    this.props.onRequestMusic();
+    this.props.onCardShow(true);
+  }
+  
   onCardFavClick = event => {
     //defining selected song
     const { cardShow } = this.props;

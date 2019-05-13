@@ -33,23 +33,23 @@ const initialFavArray = {
 export const handleCountries = (state = countriesMain, action = {}) => {
   switch (action.type) {
     case REQUEST_COUNTRY_SUCCESS:
-      return update(state, {
-        0: {
+    return update(state, {
+      [action.payload.no]: {
           topSongs: {
             0: {
-              artist: { $set: action.payload.message.body.track_list[0].track.artist_name },
-              track: { $set: action.payload.message.body.track_list[0].track.track_name },
-              album: { $set: action.payload.message.body.track_list[0].track.album_name }
+              artist: { $set: action.payload.res.message.body.track_list[0].track.artist_name },
+              track: { $set: action.payload.res.message.body.track_list[0].track.track_name },
+              album: { $set: action.payload.res.message.body.track_list[0].track.album_name }
             },
             1: {
-              artist: { $set: action.payload.message.body.track_list[1].track.artist_name },
-              track: { $set: action.payload.message.body.track_list[1].track.track_name },
-              album: { $set: action.payload.message.body.track_list[1].track.album_name }
+              artist: { $set: action.payload.res.message.body.track_list[1].track.artist_name },
+              track: { $set: action.payload.res.message.body.track_list[1].track.track_name },
+              album: { $set: action.payload.res.message.body.track_list[1].track.album_name }
             },
             2: {
-              artist: { $set: action.payload.message.body.track_list[2].track.artist_name },
-              track: { $set: action.payload.message.body.track_list[2].track.track_name },
-              album: { $set: action.payload.message.body.track_list[2].track.album_name }
+              artist: { $set: action.payload.res.message.body.track_list[2].track.artist_name },
+              track: { $set: action.payload.res.message.body.track_list[2].track.track_name },
+              album: { $set: action.payload.res.message.body.track_list[2].track.album_name }
             }
           }
         }

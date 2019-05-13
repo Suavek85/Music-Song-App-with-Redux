@@ -7,32 +7,14 @@ import Spinner from "../../components/Animations/Spinner/Spinner";
 import "./App.css";
 
 import { connect } from "react-redux";
-import {
-  requestMusic,
-  isCardShow,
-} from "../../actions";
 
 const mapStateToProps = state => {
   return {
-    isLoading: state.handleMusicCards.isLoading,
-    cardShow: state.isCardShow.cardShow,
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    onRequestMusic: () => dispatch(requestMusic()),
-    onCardShow: text => dispatch(isCardShow(text)),
+    isLoading: state.handleMusicCards.isLoading
   };
 };
 
 class App extends Component {
-
-  componentDidMount() {
-    this.props.onRequestMusic();
-    this.props.onCardShow(true);
-  }
-
   render() {
     const { isLoading } = this.props;
     return (
@@ -47,7 +29,4 @@ class App extends Component {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App);
+export default connect(mapStateToProps)(App);
