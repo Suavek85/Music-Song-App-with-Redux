@@ -20,7 +20,6 @@ const mapStateToProps = state => {
     isLoading: state.handleMusicCards.isLoading,
     cardShow: state.isCardShow.cardShow,
     favsArray: state.handleFavs.favsArray
-
   };
 };
 
@@ -38,7 +37,6 @@ const mapDispatchToProps = dispatch => {
 
 class Card extends Component {
   onCardFavClick = event => {
-
     //defining selected song
     const { cardShow } = this.props;
     if (cardShow) {
@@ -88,12 +86,7 @@ class Card extends Component {
   };
 
   render() {
-    const {
-      input,
-      musicStateItemList,
-      favsArray,
-      cardShow
-    } = this.props;
+    const { input, musicStateItemList, favsArray, cardShow } = this.props;
     return (
       <div>
         <CardList
