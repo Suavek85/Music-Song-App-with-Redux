@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   CHANGE_INPUT,
   REQUEST_MUSIC_SUCCESS,
@@ -25,31 +26,24 @@ export const setInputCountry = text => ({
   payload: text
 });
 
-
 export const requestSelectedCountry = (text) => dispatch => {
-  fetch(specificCountryUrl(text))
-    .then(data => {
-      return data.json();
-    })
-    .then(res => {
-      dispatch({
-        type: REQUEST_SELECTED_COUNTRY_SUCCESS,
-        payload:  res, 
-      });
+  axios.get(specificCountryUrl(text))
+  .then(res => {
+    dispatch({
+      type: REQUEST_SELECTED_COUNTRY_SUCCESS,
+      payload:  res, 
     });
+  })
 };
 
 export const requestCountry = (text, no) => dispatch => {
-  fetch(specificCountryUrl(text))
-    .then(data => {
-      return data.json();
-    })
-    .then(res => {
-      dispatch({
-        type: REQUEST_COUNTRY_SUCCESS,
+  axios.get(specificCountryUrl(text))
+  .then(res => {
+    dispatch({
+      type: REQUEST_COUNTRY_SUCCESS,
         payload: { res, no }
-      });
     });
+  })
 };
 
 export const requestMusic = () => dispatch => {
@@ -98,7 +92,6 @@ export const toggleCountrySelectedFav = text => ({
   type: TOGGLE_COUNTRY_SELECTED_FAV,
   payload: text
 });
-
 
 export const activateLoading = () => ({
   type: ACTIVATE_LOADING

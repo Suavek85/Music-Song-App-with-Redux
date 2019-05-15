@@ -33,7 +33,6 @@ const initialFavArray = {
   favsArray: []
 };
 
-
 export const handleSelectedCountry = (state = countrySelected, action = {}) => {
   switch (action.type) {
     case REQUEST_SELECTED_COUNTRY_SUCCESS:
@@ -44,58 +43,58 @@ export const handleSelectedCountry = (state = countrySelected, action = {}) => {
           0: {
             artist: {
               $set:
-                action.payload.message.body.track_list[0].track
+                action.payload.data.message.body.track_list[0].track
                   .artist_name
             },
             track: {
               $set:
-                action.payload.message.body.track_list[0].track.track_name
+                action.payload.data.message.body.track_list[0].track.track_name
             },
             id: {
               $set:
-                action.payload.message.body.track_list[0].track.track_id
+                action.payload.data.message.body.track_list[0].track.track_id
             },
             album: {
               $set:
-                action.payload.message.body.track_list[0].track.album_name
+                action.payload.data.message.body.track_list[0].track.album_name
             }
           },
           1: {
             artist: {
               $set:
-                action.payload.message.body.track_list[1].track
+                action.payload.data.message.body.track_list[1].track
                   .artist_name
             },
             track: {
               $set:
-                action.payload.message.body.track_list[1].track.track_name
+                action.payload.data.message.body.track_list[1].track.track_name
             },
             id: {
               $set:
-                action.payload.message.body.track_list[1].track.track_id
+                action.payload.data.message.body.track_list[1].track.track_id
             },
             album: {
               $set:
-                action.payload.message.body.track_list[1].track.album_name
+                action.payload.data.message.body.track_list[1].track.album_name
             }
           },
           2: {
             artist: {
               $set:
-                action.payload.message.body.track_list[2].track
+                action.payload.data.message.body.track_list[2].track
                   .artist_name
             },
             track: {
               $set:
-                action.payload.message.body.track_list[2].track.track_name
+                action.payload.data.message.body.track_list[2].track.track_name
             },
             id: {
               $set:
-                action.payload.message.body.track_list[2].track.track_id
+                action.payload.data.message.body.track_list[2].track.track_id
             },
             album: {
               $set:
-                action.payload.message.body.track_list[2].track.album_name
+                action.payload.data.message.body.track_list[2].track.album_name
             }
           }
         }
@@ -110,7 +109,6 @@ export const handleSelectedCountry = (state = countrySelected, action = {}) => {
   }
 };
 
-
 export const handleCountries = (state = countriesMain, action = {}) => {
   switch (action.type) {
     case REQUEST_COUNTRY_SUCCESS:
@@ -120,46 +118,46 @@ export const handleCountries = (state = countriesMain, action = {}) => {
             0: {
               artist: {
                 $set:
-                  action.payload.res.message.body.track_list[0].track
+                  action.payload.res.data.message.body.track_list[0].track
                     .artist_name
               },
               track: {
                 $set:
-                  action.payload.res.message.body.track_list[0].track.track_name
+                  action.payload.res.data.message.body.track_list[0].track.track_name
               },
               album: {
                 $set:
-                  action.payload.res.message.body.track_list[0].track.album_name
+                  action.payload.res.data.message.body.track_list[0].track.album_name
               }
             },
             1: {
               artist: {
                 $set:
-                  action.payload.res.message.body.track_list[1].track
+                  action.payload.res.data.message.body.track_list[1].track
                     .artist_name
               },
               track: {
                 $set:
-                  action.payload.res.message.body.track_list[1].track.track_name
+                  action.payload.res.data.message.body.track_list[1].track.track_name
               },
               album: {
                 $set:
-                  action.payload.res.message.body.track_list[1].track.album_name
+                  action.payload.res.data.message.body.track_list[1].track.album_name
               }
             },
             2: {
               artist: {
                 $set:
-                  action.payload.res.message.body.track_list[2].track
+                  action.payload.res.data.message.body.track_list[2].track
                     .artist_name
               },
               track: {
                 $set:
-                  action.payload.res.message.body.track_list[2].track.track_name
+                  action.payload.res.data.message.body.track_list[2].track.track_name
               },
               album: {
                 $set:
-                  action.payload.res.message.body.track_list[2].track.album_name
+                  action.payload.res.data.message.body.track_list[2].track.album_name
               }
             }
           }
