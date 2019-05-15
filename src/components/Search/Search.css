@@ -11,6 +11,7 @@
 .search input {
     width: 370px;
     padding: 10px 5px;
+    text-align: center;
     float: left;
     color: #ccc;
     border: 0;

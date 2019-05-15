@@ -14,7 +14,7 @@ import {
 
 const CardItem = props => {
   return (
-    <article className=" w-25 w-40-m mh3 relative bg-near-white br3 pa3 pa4-ns mv5 ba b--black-10">
+    <article className=" w-20 w-40-m mh3 relative bg-near-white br3 pa2 pa4-ns mv5 ba b--black-10 shadow-4">
       <div
         className="fav-wrapper grow-hov"
         style={leftStyle}

@@ -80,7 +80,7 @@ const textXx = {
 };
 
 const numberCircle = {
-  paddingTop: "5px",
+  paddingTop: "6px",
   paddingBottom: "5px",
   paddingLeft: "13px",
   paddingRight: "13px",
