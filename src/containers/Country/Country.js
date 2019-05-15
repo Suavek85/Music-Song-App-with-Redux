@@ -14,6 +14,7 @@ import {
   requestSpecificMusic,
   isCardShow,
   toggleCardFav,
+  toggleCountryFav,
   activateLoading,
   setInputCountry,
   addFav,
@@ -29,7 +30,7 @@ const mapStateToProps = state => {
     isLoading: state.handleMusicCards.isLoading,
     cardShow: state.isCardShow.cardShow,
     favsArray: state.handleFavs.favsArray,
-    countriesMain: state.handleCountries,
+    countriesMain: state.handleCountries
   };
 };
 
@@ -44,7 +45,8 @@ const mapDispatchToProps = dispatch => {
     onActivateLoading: () => dispatch(activateLoading()),
     onAddFav: text => dispatch(addFav(text)),
     onRemoveFavs: text => dispatch(removeFav(text)),
-    onRequestCountries: (text, no) => dispatch(requestCountry(text,no))
+    onRequestCountries: (text, no) => dispatch(requestCountry(text, no)),
+    onToggleCountryFav: text => dispatch(toggleCountryFav(text)),
   };
 };
 
@@ -55,13 +57,16 @@ class Country extends Component {
   };
 
   componentDidMount() {
-    this.props.onRequestCountries('br', 0);
-    this.props.onRequestCountries('us', 1);
-    this.props.onRequestCountries('es', 2);
+    [
+      { code: "br", index: 0 },
+      { code: "us", index: 1 },
+      { code: "es", index: 2 }
+    ].forEach(el => {
+      this.props.onRequestCountries(el.code, el.index);
+    });
   }
 
   onCountryButtonClick = () => {
-  
     //converting country name to country code
     const countryIndex = countryCodeArr.findIndex(el => {
       return el.name === this.props.inputCountry;
@@ -99,7 +104,7 @@ class Country extends Component {
     //defining selected song
     const target = event.target.dataset.id;
     const number = event.target.dataset.no;
-    const country = this.state.countries;
+    const country = this.props.countriesMain;
     let newArray = [];
     const topSongsArr = [
       country[0].topSongs,
@@ -119,11 +124,14 @@ class Country extends Component {
       addedToFav: true
     };
 
+
+
+
     //toggling fav icons empty/full heart
-    this.setState(prevState => {
-      const country = prevState.countries;
+    
+      const updatedCountries = [...this.props.countriesMain];
       [0, 1, 2].forEach(element => {
-        country[element].topSongs.forEach(el => {
+        updatedCountries[element].topSongs.forEach(el => {
           if (
             el.id === parseFloat(target) &&
             el.number === parseFloat(number)
@@ -134,10 +142,8 @@ class Country extends Component {
           }
         });
       });
-      return {
-        countries: country
-      };
-    });
+      this.props.onToggleCountryFav(updatedCountries)
+    
 
     //conditionally pushing defined song to Favs
     const currentFavsArray = [...this.props.favsArray];

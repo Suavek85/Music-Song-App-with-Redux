@@ -3,6 +3,7 @@ import {
   REQUEST_MUSIC_SUCCESS,
   CARD_SHOWS,
   TOGGLE_CARD_FAV,
+  TOGGLE_COUNTRY_FAV,
   ACTIVATE_LOADING,
   REQUEST_MUSIC_SPECIFIC_SUCCESS,
   CHANGE_INPUT_COUNTRY,
@@ -69,6 +70,11 @@ export const isCardShow = text => ({
 
 export const toggleCardFav = text => ({
   type: TOGGLE_CARD_FAV,
+  payload: text
+});
+
+export const toggleCountryFav = text => ({
+  type: TOGGLE_COUNTRY_FAV,
   payload: text
 });
 
