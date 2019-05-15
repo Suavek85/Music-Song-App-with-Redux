@@ -7,13 +7,15 @@ import {
   CARD_SHOWS,
   TOGGLE_CARD_FAV,
   TOGGLE_COUNTRY_FAV,
+  TOGGLE_COUNTRY_SELECTED_FAV,
   ADD_FAV,
   REMOVE_FAV,
   ACTIVATE_LOADING,
-  REQUEST_COUNTRY_SUCCESS
+  REQUEST_COUNTRY_SUCCESS,
+  REQUEST_SELECTED_COUNTRY_SUCCESS
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
-import { countriesMain } from "./components/Country/CountriesStateStyle";
+import { countriesMain, countrySelected } from "./components/Country/CountriesStateStyle";
 
 const initialStateSearch = {
   input: "Justin Bieber"
@@ -30,6 +32,84 @@ const initialStateCard = {
 const initialFavArray = {
   favsArray: []
 };
+
+
+export const handleSelectedCountry = (state = countrySelected, action = {}) => {
+  switch (action.type) {
+    case REQUEST_SELECTED_COUNTRY_SUCCESS:
+    return update(state, {
+      0: {
+        showSongs: {$set: true },
+        topSongs: {
+          0: {
+            artist: {
+              $set:
+                action.payload.message.body.track_list[0].track
+                  .artist_name
+            },
+            track: {
+              $set:
+                action.payload.message.body.track_list[0].track.track_name
+            },
+            id: {
+              $set:
+                action.payload.message.body.track_list[0].track.track_id
+            },
+            album: {
+              $set:
+                action.payload.message.body.track_list[0].track.album_name
+            }
+          },
+          1: {
+            artist: {
+              $set:
+                action.payload.message.body.track_list[1].track
+                  .artist_name
+            },
+            track: {
+              $set:
+                action.payload.message.body.track_list[1].track.track_name
+            },
+            id: {
+              $set:
+                action.payload.message.body.track_list[1].track.track_id
+            },
+            album: {
+              $set:
+                action.payload.message.body.track_list[1].track.album_name
+            }
+          },
+          2: {
+            artist: {
+              $set:
+                action.payload.message.body.track_list[2].track
+                  .artist_name
+            },
+            track: {
+              $set:
+                action.payload.message.body.track_list[2].track.track_name
+            },
+            id: {
+              $set:
+                action.payload.message.body.track_list[2].track.track_id
+            },
+            album: {
+              $set:
+                action.payload.message.body.track_list[2].track.album_name
+            }
+          }
+        }
+      }
+    });
+    case TOGGLE_COUNTRY_SELECTED_FAV:
+      return update(state, {
+        $set: action.payload
+      });
+    default:
+      return state;
+  }
+};
+
 
 export const handleCountries = (state = countriesMain, action = {}) => {
   switch (action.type) {

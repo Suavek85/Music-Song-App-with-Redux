@@ -4,7 +4,7 @@ import CountryItem from "./CountryItem/CountryItem";
 const CountryList = props => {
   return (
     <div>
-        {props.countryBottom.map(el => {
+        {props.countrySelected.map(el => {
         return (
           <CountryItem
             wrapperStyle={el.wrapperStyle}

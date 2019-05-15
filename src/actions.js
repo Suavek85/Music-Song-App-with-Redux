@@ -4,12 +4,14 @@ import {
   CARD_SHOWS,
   TOGGLE_CARD_FAV,
   TOGGLE_COUNTRY_FAV,
+  TOGGLE_COUNTRY_SELECTED_FAV,
   ACTIVATE_LOADING,
   REQUEST_MUSIC_SPECIFIC_SUCCESS,
   CHANGE_INPUT_COUNTRY,
   ADD_FAV,
   REMOVE_FAV,
-  REQUEST_COUNTRY_SUCCESS
+  REQUEST_COUNTRY_SUCCESS,
+  REQUEST_SELECTED_COUNTRY_SUCCESS
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
@@ -22,6 +24,20 @@ export const setInputCountry = text => ({
   type: CHANGE_INPUT_COUNTRY,
   payload: text
 });
+
+
+export const requestSelectedCountry = (text) => dispatch => {
+  fetch(specificCountryUrl(text))
+    .then(data => {
+      return data.json();
+    })
+    .then(res => {
+      dispatch({
+        type: REQUEST_SELECTED_COUNTRY_SUCCESS,
+        payload:  res, 
+      });
+    });
+};
 
 export const requestCountry = (text, no) => dispatch => {
   fetch(specificCountryUrl(text))
@@ -77,6 +93,12 @@ export const toggleCountryFav = text => ({
   type: TOGGLE_COUNTRY_FAV,
   payload: text
 });
+
+export const toggleCountrySelectedFav = text => ({
+  type: TOGGLE_COUNTRY_SELECTED_FAV,
+  payload: text
+});
+
 
 export const activateLoading = () => ({
   type: ACTIVATE_LOADING

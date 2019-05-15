@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 import CountryList from "../../components/Country/CountryList";
 import CountriesList from "../../components/Country/CountriesList";
-import { specificCountryUrl } from "../API";
-import {
-  countriesMain,
-  countrySelected
-} from "../../components/Country/CountriesStateStyle";
 import countryCodeArr from "../../components/Country/CountryCode";
 
 import { connect } from "react-redux";
@@ -15,11 +10,13 @@ import {
   isCardShow,
   toggleCardFav,
   toggleCountryFav,
+  toggleCountrySelectedFav,
   activateLoading,
   setInputCountry,
   addFav,
   removeFav,
-  requestCountry
+  requestCountry,
+  requestSelectedCountry
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -30,7 +27,8 @@ const mapStateToProps = state => {
     isLoading: state.handleMusicCards.isLoading,
     cardShow: state.isCardShow.cardShow,
     favsArray: state.handleFavs.favsArray,
-    countriesMain: state.handleCountries
+    countriesMain: state.handleCountries,
+    countrySelected: state.handleSelectedCountry
   };
 };
 
@@ -47,15 +45,12 @@ const mapDispatchToProps = dispatch => {
     onRemoveFavs: text => dispatch(removeFav(text)),
     onRequestCountries: (text, no) => dispatch(requestCountry(text, no)),
     onToggleCountryFav: text => dispatch(toggleCountryFav(text)),
+    onRequestSelectedCountry: text => dispatch(requestSelectedCountry(text)),
+    onToggleCountrySelectedFav: text => dispatch(toggleCountrySelectedFav(text))
   };
 };
 
 class Country extends Component {
-  state = {
-    countries: countriesMain,
-    countryBottom: countrySelected
-  };
-
   componentDidMount() {
     [
       { code: "br", index: 0 },
@@ -63,6 +58,7 @@ class Country extends Component {
       { code: "es", index: 2 }
     ].forEach(el => {
       this.props.onRequestCountries(el.code, el.index);
+      console.log(this.props.countriesMain);
     });
   }
 
@@ -75,36 +71,14 @@ class Country extends Component {
       return;
     }
     const countryCode = countryCodeArr[countryIndex].code;
-
-    //fetching url with country code
-    fetch(specificCountryUrl(countryCode))
-      .then(data => {
-        return data.json();
-      })
-      .then(res => {
-        if (res.message.body.track_list) {
-          this.setState(prevState => {
-            const newCountryBottom = prevState.countryBottom;
-            newCountryBottom[0].showSongs = true;
-            newCountryBottom[0].topSongs.forEach((el, i) => {
-              el.track = res.message.body.track_list[i].track.track_name;
-              el.album = res.message.body.track_list[i].track.album_name;
-              el.artist = res.message.body.track_list[i].track.artist_name;
-              el.id = res.message.body.track_list[i].track.track_id;
-            });
-            return {
-              countryBottom: newCountryBottom
-            };
-          });
-        }
-      });
+    this.props.onRequestSelectedCountry(countryCode);
   };
 
   onCountryFavClick = event => {
     //defining selected song
     const target = event.target.dataset.id;
     const number = event.target.dataset.no;
-    const country = this.props.countriesMain;
+    const country = [...this.props.countriesMain];
     let newArray = [];
     const topSongsArr = [
       country[0].topSongs,
@@ -124,26 +98,18 @@ class Country extends Component {
       addedToFav: true
     };
 
-
-
-
     //toggling fav icons empty/full heart
-    
-      const updatedCountries = [...this.props.countriesMain];
-      [0, 1, 2].forEach(element => {
-        updatedCountries[element].topSongs.forEach(el => {
-          if (
-            el.id === parseFloat(target) &&
-            el.number === parseFloat(number)
-          ) {
-            el.favClicked = !el.favClicked;
-          } else {
-            return;
-          }
-        });
+    const updatedCountries = [...this.props.countriesMain];
+    [0, 1, 2].forEach(element => {
+      updatedCountries[element].topSongs.forEach(el => {
+        if (el.id === parseFloat(target) && el.number === parseFloat(number)) {
+          el.favClicked = !el.favClicked;
+        } else {
+          return;
+        }
       });
-      this.props.onToggleCountryFav(updatedCountries)
-    
+    });
+    this.props.onToggleCountryFav(updatedCountries);
 
     //conditionally pushing defined song to Favs
     const currentFavsArray = [...this.props.favsArray];
@@ -160,33 +126,29 @@ class Country extends Component {
     //defining selected song
     const target = event.target.dataset.id;
     const number = event.target.dataset.no;
-    const country = this.state.countryBottom;
-    const countryIndex = country[0].topSongs.findIndex(
+    const updatedCountry = [...this.props.countrySelected];
+    const countryIndex = updatedCountry[0].topSongs.findIndex(
       el => el.id === parseFloat(target)
     );
     const songItem = {
-      track: country[0].topSongs[countryIndex].track,
-      album: country[0].topSongs[countryIndex].album,
-      artist: country[0].topSongs[countryIndex].artist,
-      id: country[0].topSongs[countryIndex].id,
+      track: updatedCountry[0].topSongs[countryIndex].track,
+      album: updatedCountry[0].topSongs[countryIndex].album,
+      artist: updatedCountry[0].topSongs[countryIndex].artist,
+      id: updatedCountry[0].topSongs[countryIndex].id,
       favClicked: true,
       addedToFav: true
     };
 
     //toggling fav icons empty/full heart
-    this.setState(prevState => {
-      const country = prevState.countryBottom;
-      country[0].topSongs.forEach(el => {
-        if (el.id === parseFloat(target) && el.number === parseFloat(number)) {
-          el.favClicked = !el.favClicked;
-        } else {
-          return;
-        }
-      });
-      return {
-        countryBottom: country
-      };
+    updatedCountry[0].topSongs.forEach(el => {
+      if (el.id === parseFloat(target) && el.number === parseFloat(number)) {
+        el.favClicked = !el.favClicked;
+      } else {
+        return;
+      }
     });
+    this.props.onToggleCountrySelectedFav(updatedCountry);
+
     //conditionally pushing defined song to Favs
     const currentFavsArray = [...this.props.favsArray];
     const alreadyFav = currentFavsArray.find(
@@ -199,8 +161,11 @@ class Country extends Component {
   };
 
   render() {
-    const { onSearchCountryChange, countriesMain } = this.props;
-    const { countryBottom } = this.state;
+    const {
+      onSearchCountryChange,
+      countriesMain,
+      countrySelected
+    } = this.props;
     return (
       <div>
         <CountriesList
@@ -210,7 +175,7 @@ class Country extends Component {
         <CountryList
           buttonClick={this.onCountryButtonClick}
           searchChange={onSearchCountryChange}
-          countryBottom={countryBottom}
+          countrySelected={countrySelected}
           onCountryFavClick={this.onSelectedCountryFavClick}
         />
       </div>
