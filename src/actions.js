@@ -2,12 +2,14 @@ import axios from 'axios';
 import {
   CHANGE_INPUT,
   REQUEST_MUSIC_SUCCESS,
+  REQUEST_MUSIC_ERROR,
   CARD_SHOWS,
   TOGGLE_CARD_FAV,
   TOGGLE_COUNTRY_FAV,
   TOGGLE_COUNTRY_SELECTED_FAV,
   ACTIVATE_LOADING,
   REQUEST_MUSIC_SPECIFIC_SUCCESS,
+  REQUEST_MUSIC_SPECIFIC_ERROR,
   CHANGE_INPUT_COUNTRY,
   ADD_FAV,
   REMOVE_FAV,
@@ -25,6 +27,39 @@ export const setInputCountry = text => ({
   type: CHANGE_INPUT_COUNTRY,
   payload: text
 });
+
+
+export const requestMusic = () => dispatch => {
+  axios.get(genericUrl)
+  .then(res => {
+    dispatch({
+      type: REQUEST_MUSIC_SUCCESS,
+        payload: res
+    });
+  })
+  .catch(error => {
+    console.log(error);
+    dispatch({
+      type: REQUEST_MUSIC_ERROR
+    });
+  })
+};
+
+export const requestSpecificMusic = input => dispatch => {
+  axios.get(specificUrl(input))
+  .then(res => {
+    dispatch({
+      type: REQUEST_MUSIC_SPECIFIC_SUCCESS,
+        payload: res
+    });
+  })
+  .catch(error => {
+    console.log(error);
+    dispatch({
+      type: REQUEST_MUSIC_SPECIFIC_ERROR,
+    });
+  })
+};
 
 export const requestSelectedCountry = (text) => dispatch => {
   axios.get(specificCountryUrl(text))
@@ -44,33 +79,6 @@ export const requestCountry = (text, no) => dispatch => {
         payload: { res, no }
     });
   })
-};
-
-export const requestMusic = () => dispatch => {
-  fetch(genericUrl)
-    .then(data => {
-      return data.json();
-    })
-    .then(res => {
-      console.log(res);
-      dispatch({
-        type: REQUEST_MUSIC_SUCCESS,
-        payload: res
-      });
-    });
-};
-
-export const requestSpecificMusic = input => dispatch => {
-  fetch(specificUrl(input))
-    .then(data => {
-      return data.json();
-    })
-    .then(res => {
-      dispatch({
-        type: REQUEST_MUSIC_SPECIFIC_SUCCESS,
-        payload: res
-      });
-    });
 };
 
 export const isCardShow = text => ({

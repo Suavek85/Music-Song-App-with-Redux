@@ -18,6 +18,7 @@ const mapStateToProps = state => {
     input: state.searchMusic.input,
     musicStateItemList: state.handleMusicCards.musicStateItemList,
     isLoading: state.handleMusicCards.isLoading,
+    isError: state.handleMusicCards.isError,
     cardShow: state.isCardShow.cardShow,
     favsArray: state.handleFavs.favsArray
   };
@@ -92,7 +93,7 @@ class Card extends Component {
   };
 
   render() {
-    const { input, musicStateItemList, favsArray, cardShow } = this.props;
+    const { input, musicStateItemList, favsArray, cardShow, isError } = this.props;
     return (
       <div>
         <CardList
@@ -100,6 +101,7 @@ class Card extends Component {
           cardsShow={cardShow}
           music={musicStateItemList}
           input={input}
+          isError={isError}
         />
         <FavList
           closeFavs={this.onCloseFavs}

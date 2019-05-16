@@ -18,6 +18,7 @@ const musicStateItemList = [
 
 export const musicState = {
   isLoading: true,
+  isError: false,
   musicStateItemList: musicStateItemList
 }
 

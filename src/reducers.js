@@ -3,7 +3,9 @@ import {
   CHANGE_INPUT,
   CHANGE_INPUT_COUNTRY,
   REQUEST_MUSIC_SUCCESS,
+  REQUEST_MUSIC_ERROR,
   REQUEST_MUSIC_SPECIFIC_SUCCESS,
+  REQUEST_MUSIC_SPECIFIC_ERROR,
   CARD_SHOWS,
   TOGGLE_CARD_FAV,
   TOGGLE_COUNTRY_FAV,
@@ -15,7 +17,10 @@ import {
   REQUEST_SELECTED_COUNTRY_SUCCESS
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
-import { countriesMain, countrySelected } from "./components/Country/CountriesStateStyle";
+import {
+  countriesMain,
+  countrySelected
+} from "./components/Country/CountriesStateStyle";
 
 const initialStateSearch = {
   input: "Justin Bieber"
@@ -36,70 +41,76 @@ const initialFavArray = {
 export const handleSelectedCountry = (state = countrySelected, action = {}) => {
   switch (action.type) {
     case REQUEST_SELECTED_COUNTRY_SUCCESS:
-    return update(state, {
-      0: {
-        showSongs: {$set: true },
-        topSongs: {
-          0: {
-            artist: {
-              $set:
-                action.payload.data.message.body.track_list[0].track
-                  .artist_name
+      return update(state, {
+        0: {
+          showSongs: { $set: true },
+          topSongs: {
+            0: {
+              artist: {
+                $set:
+                  action.payload.data.message.body.track_list[0].track
+                    .artist_name
+              },
+              track: {
+                $set:
+                  action.payload.data.message.body.track_list[0].track
+                    .track_name
+              },
+              id: {
+                $set:
+                  action.payload.data.message.body.track_list[0].track.track_id
+              },
+              album: {
+                $set:
+                  action.payload.data.message.body.track_list[0].track
+                    .album_name
+              }
             },
-            track: {
-              $set:
-                action.payload.data.message.body.track_list[0].track.track_name
+            1: {
+              artist: {
+                $set:
+                  action.payload.data.message.body.track_list[1].track
+                    .artist_name
+              },
+              track: {
+                $set:
+                  action.payload.data.message.body.track_list[1].track
+                    .track_name
+              },
+              id: {
+                $set:
+                  action.payload.data.message.body.track_list[1].track.track_id
+              },
+              album: {
+                $set:
+                  action.payload.data.message.body.track_list[1].track
+                    .album_name
+              }
             },
-            id: {
-              $set:
-                action.payload.data.message.body.track_list[0].track.track_id
-            },
-            album: {
-              $set:
-                action.payload.data.message.body.track_list[0].track.album_name
-            }
-          },
-          1: {
-            artist: {
-              $set:
-                action.payload.data.message.body.track_list[1].track
-                  .artist_name
-            },
-            track: {
-              $set:
-                action.payload.data.message.body.track_list[1].track.track_name
-            },
-            id: {
-              $set:
-                action.payload.data.message.body.track_list[1].track.track_id
-            },
-            album: {
-              $set:
-                action.payload.data.message.body.track_list[1].track.album_name
-            }
-          },
-          2: {
-            artist: {
-              $set:
-                action.payload.data.message.body.track_list[2].track
-                  .artist_name
-            },
-            track: {
-              $set:
-                action.payload.data.message.body.track_list[2].track.track_name
-            },
-            id: {
-              $set:
-                action.payload.data.message.body.track_list[2].track.track_id
-            },
-            album: {
-              $set:
-                action.payload.data.message.body.track_list[2].track.album_name
+            2: {
+              artist: {
+                $set:
+                  action.payload.data.message.body.track_list[2].track
+                    .artist_name
+              },
+              track: {
+                $set:
+                  action.payload.data.message.body.track_list[2].track
+                    .track_name
+              },
+              id: {
+                $set:
+                  action.payload.data.message.body.track_list[2].track.track_id
+              },
+              album: {
+                $set:
+                  action.payload.data.message.body.track_list[2].track
+                    .album_name
+              }
             }
           }
         }
-      }
-    });
+      });
     case TOGGLE_COUNTRY_SELECTED_FAV:
       return update(state, {
         $set: action.payload
@@ -123,11 +134,13 @@ export const handleCountries = (state = countriesMain, action = {}) => {
               },
               track: {
                 $set:
-                  action.payload.res.data.message.body.track_list[0].track.track_name
+                  action.payload.res.data.message.body.track_list[0].track
+                    .track_name
               },
               album: {
                 $set:
-                  action.payload.res.data.message.body.track_list[0].track.album_name
+                  action.payload.res.data.message.body.track_list[0].track
+                    .album_name
               }
             },
             1: {
@@ -138,11 +151,13 @@ export const handleCountries = (state = countriesMain, action = {}) => {
               },
               track: {
                 $set:
-                  action.payload.res.data.message.body.track_list[1].track.track_name
+                  action.payload.res.data.message.body.track_list[1].track
+                    .track_name
               },
               album: {
                 $set:
-                  action.payload.res.data.message.body.track_list[1].track.album_name
+                  action.payload.res.data.message.body.track_list[1].track
+                    .album_name
               }
             },
             2: {
@@ -153,11 +168,13 @@ export const handleCountries = (state = countriesMain, action = {}) => {
               },
               track: {
                 $set:
-                  action.payload.res.data.message.body.track_list[2].track.track_name
+                  action.payload.res.data.message.body.track_list[2].track
+                    .track_name
               },
               album: {
                 $set:
-                  action.payload.res.data.message.body.track_list[2].track.album_name
+                  action.payload.res.data.message.body.track_list[2].track
+                    .album_name
               }
             }
           }
@@ -179,14 +196,22 @@ export const handleMusicCards = (state = musicState, action = {}) => {
         musicStateItemList: state.musicStateItemList.map((el, i) => {
           return {
             ...el,
-            track: action.payload.message.body.track_list[i].track.track_name,
-            album: action.payload.message.body.track_list[i].track.album_name,
-            artist: action.payload.message.body.track_list[i].track.artist_name,
-            id: action.payload.message.body.track_list[i].track.track_id,
+            track:
+              action.payload.data.message.body.track_list[i].track.track_name,
+            album:
+              action.payload.data.message.body.track_list[i].track.album_name,
+            artist:
+              action.payload.data.message.body.track_list[i].track.artist_name,
+            id: action.payload.data.message.body.track_list[i].track.track_id,
             favClicked: false,
             addedToFav: false
           };
         }),
+        isLoading: false
+      });
+    case REQUEST_MUSIC_ERROR:
+      return Object.assign({}, state, {
+        isError: true,
         isLoading: false
       });
     case REQUEST_MUSIC_SPECIFIC_SUCCESS:
@@ -194,14 +219,19 @@ export const handleMusicCards = (state = musicState, action = {}) => {
         musicStateItemList: state.musicStateItemList.map((el, i) => {
           return {
             ...el,
-            track: action.payload.message.body.track_list[i].track.track_name,
-            album: action.payload.message.body.track_list[i].track.album_name,
-            artist: action.payload.message.body.track_list[i].track.artist_name,
-            id: action.payload.message.body.track_list[i].track.track_id,
+            track: action.payload.data.message.body.track_list[i].track.track_name,
+            album: action.payload.data.message.body.track_list[i].track.album_name,
+            artist: action.payload.data.message.body.track_list[i].track.artist_name,
+            id: action.payload.data.message.body.track_list[i].track.track_id,
             favClicked: false,
             addedToFav: false
           };
         }),
+        isLoading: false
+      });
+    case REQUEST_MUSIC_SPECIFIC_ERROR:
+      return Object.assign({}, state, {
+        isError: true,
         isLoading: false
       });
     case TOGGLE_CARD_FAV:
