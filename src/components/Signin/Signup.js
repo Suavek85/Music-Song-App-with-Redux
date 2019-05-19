@@ -6,7 +6,7 @@ const Signup = () => {
   return (
     <article className="absolute w-5 bg-white tl pa4 black-80"
     style={{ top: "104%", right: "-2%", width: "300px" }}>
-    <form className="relative" action="sign-up_submit" method="get" accept-charset="utf-8">
+    <form className="relative" action="sign-up_submit" method="get" acceptCharset="utf-8">
     <Link to="/" style={{ textDecoration: "none" }}>
           <BlackWindowClose />
         </Link>

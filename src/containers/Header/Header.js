@@ -63,7 +63,7 @@ class Header extends Component {
 
     return (
       <Router>
-        <header className="sans-serif  ">
+        <header className="sans-serif mb5">
           <div className="cover bg-left bg-center-l " style={backImageStyle}>
             <div className="bg-black-80 pb5 pb6-m pb7-l ">
               <nav className="dt w-100 mw8 center">

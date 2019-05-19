@@ -6,9 +6,9 @@ const CardList = props => {
     return (
       <div>
         {props.isError ? (
-          <h1 className="f1 lh-title gray">Oops an error. Try reloading the page.</h1>
+          <h1 className="f1 lh-title white">Oops an error. Try reloading the page.</h1>
         ) : (
-          <h1 className="f1 lh-title gray">Top Songs by "{props.input}"</h1>
+          <h1 className="f1 lh-title white"><span>Top songs by "{props.input}"</span></h1>
         )}
         <div className="flex flex-wrap relative justify-center">
           {props.music.map(el => {

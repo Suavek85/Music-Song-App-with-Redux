@@ -33,33 +33,30 @@ const wrapperRandom = {
 };
 
 const textBr = {
-  fontSize: "60px",
+  fontSize: "50px",
   paddingTop: "30px",
   marginBottom: "40px",
   color: "pink",
-  fontFamily: "'Montserrat', sans-serif",
   fontWeight: "900",
   lineHeight: "1, 5",
   letterSpacing: "5px"
 };
 
 const textUsa = {
-  fontSize: "60px",
+  fontSize: "50px",
   paddingTop: "30px",
   marginBottom: "40px",
   color: "pink",
-  fontFamily: "'Montserrat', sans-serif",
   fontWeight: "900",
   lineHeight: "1, 5",
   letterSpacing: "7px"
 };
 
 const textEs = {
-  fontSize: "60px",
+  fontSize: "50px",
   paddingTop: "30px",
   marginBottom: "40px",
   color: "pink",
-  fontFamily: "'Montserrat', sans-serif",
   fontWeight: "900",
   lineHeight: "1, 5",
   letterSpacing: "5px"
@@ -72,9 +69,8 @@ const textXx = {
   width: "90%",
   textAlign: "center",
   outline: "none",
-  fontFamily: "'Montserrat', sans-serif",
   fontWeight: "900",
-  fontSize: "60px",
+  fontSize: "50px",
   paddingTop: "20px",
   margin: 'auto',
 };
