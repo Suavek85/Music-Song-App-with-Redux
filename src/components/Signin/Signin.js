@@ -50,9 +50,9 @@ const Signin = () => {
           />
         </div>
         <div className="lh-copy mt3">
-          <a href="#0" className="f6 link dim black db">
+          <Link to="/signup/" className="f6 link dim black db" style={{ textDecoration: "none" }}>
             Sign up
-          </a>
+          </Link>
           <a href="#0" className="f6 link dim black db">
             Forgot your password?
           </a>

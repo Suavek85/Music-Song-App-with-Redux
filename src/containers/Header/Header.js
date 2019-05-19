@@ -6,6 +6,7 @@ import PinkMusicIcon from "../../components/Icons/Logo/Logo";
 import DefaultUser from "../../components/Icons/Profile/Profile";
 import Search from "../../components/Search/Search";
 import Signin from "../../components/Signin/Signin";
+import Signup from "../../components/Signin/Signup";
 import FavBadge from "../../components/FavBadge/FavBadge";
 import scrollDownSmooth from "../../components/Animations/Animations";
 
@@ -98,6 +99,7 @@ class Header extends Component {
                       </Link>
                     </span>
                     <Route path="/signin/" component={Signin} />
+                    <Route path="/signup/" component={Signup} />
                   </div>
                 </div>
               </nav>
