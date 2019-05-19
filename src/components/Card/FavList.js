@@ -1,6 +1,6 @@
 import React from "react";
 import CardItem from "./CardItem";
-import GreyWindowClose from "../Icons/Close/Close";
+import { GreyWindowClose } from "../Icons/Close/Close";
 
 const FavList = props => {
   if (!props.cardsShow) {
