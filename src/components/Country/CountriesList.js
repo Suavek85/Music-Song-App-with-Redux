@@ -6,7 +6,7 @@ const CountriesList = props => {
   
   return (
     <div>
-      <h1 id='charts' className="f1 lh-title white">
+      <h1 id='charts' className="f1 lh-title light-gray">
                <span>Top songs in...</span> 
         </h1>
       {props.countries.map(el => {
