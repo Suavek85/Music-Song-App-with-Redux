@@ -3,63 +3,63 @@ import UsaBck from "./images/usa.jpg";
 import EsBck from "./images/spain.jpg";
 import GenBck from "./images/generic.jpg";
 
-const wrapperBrazil = {
+const wrapper = {
   height: "350px",
-  backgroundImage: `url(${BrazilBck})`,
-  backgroundAttachment: 'fixed',
-  margin: "100px auto 50px auto"
+  backgroundAttachment: "fixed"
 };
 
-const wrapperUsa = {  
-  height: "350px",
-  backgroundImage: `url(${UsaBck})`,
-  backgroundAttachment: 'fixed',
-  margin: "50px auto 50px auto"
+const wrapperBrazil = {
+  ...{ backgroundImage: `url(${BrazilBck})`, 
+  margin: "100px auto 50px auto" },
+  ...wrapper
+};
+
+const wrapperUsa = {
+  ...{
+    backgroundImage: `url(${UsaBck})`,
+    margin: "50px auto 50px auto"
+  },
+  ...wrapper
 };
 
 const wrapperEs = {
- 
-  height: "350px",
-  backgroundImage: `url(${EsBck})`,
-  backgroundAttachment: 'fixed',
-  margin: "50px auto 80px auto"
+  ...{
+    backgroundImage: `url(${EsBck})`,
+    margin: "50px auto 80px auto"
+  },
+  ...wrapper
 };
 
 const wrapperRandom = {
   height: "400px",
   backgroundImage: `url(${GenBck})`,
-  backgroundAttachment: 'fixed',
+  backgroundAttachment: "fixed",
   margin: "50px auto 80px auto"
 };
 
-const textBr = {
+const text = {
   fontSize: "50px",
   paddingTop: "30px",
   marginBottom: "40px",
   color: "pink",
   fontWeight: "900",
   lineHeight: "1, 5",
-  letterSpacing: "5px"
+
+}
+
+const textBr = {
+  ...{ letterSpacing: "5px" },
+  ...text
 };
 
 const textUsa = {
-  fontSize: "50px",
-  paddingTop: "30px",
-  marginBottom: "40px",
-  color: "pink",
-  fontWeight: "900",
-  lineHeight: "1, 5",
-  letterSpacing: "7px"
+  ...{ letterSpacing: "7px" },
+  ...text
 };
 
 const textEs = {
-  fontSize: "50px",
-  paddingTop: "30px",
-  marginBottom: "40px",
-  color: "pink",
-  fontWeight: "900",
-  lineHeight: "1, 5",
-  letterSpacing: "5px"
+  ...{ letterSpacing: "5px" },
+  ...text
 };
 
 const textXx = {
@@ -72,7 +72,7 @@ const textXx = {
   fontWeight: "900",
   fontSize: "50px",
   paddingTop: "20px",
-  margin: 'auto',
+  margin: "auto"
 };
 
 const numberCircle = {
@@ -124,7 +124,7 @@ export const countriesMain = [
     fadeRight: false,
     fadeLeft: true,
     button: false,
-    showSongs: true,
+    showSongs: true
   },
   {
     name: "USA",
@@ -205,7 +205,6 @@ export const countriesMain = [
     showSongs: true
   }
 ];
-
 
 export const countrySelected = [
   {
