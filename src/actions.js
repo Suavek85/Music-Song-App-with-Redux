@@ -14,9 +14,16 @@ import {
   ADD_FAV,
   REMOVE_FAV,
   REQUEST_COUNTRY_SUCCESS,
-  REQUEST_SELECTED_COUNTRY_SUCCESS
+  REQUEST_SELECTED_COUNTRY_SUCCESS,
+  HIDE_POPUP
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
+
+
+export const hidePopup = () => ({
+  type: HIDE_POPUP,
+  payload: false
+});
 
 export const setInput = text => ({
   type: CHANGE_INPUT,

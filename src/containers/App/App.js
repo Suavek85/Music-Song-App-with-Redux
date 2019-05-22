@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Header from "../Header/Header";
 import Card from "../Card/Card";
 import Country from "../Country/Country";
+import Popup from "../Popup/Popup";
 import Footer from "../../components/Footer/Footer";
 import Spinner from "../../components/Animations/Spinner/Spinner";
 import "./App.css";
@@ -24,6 +25,7 @@ class App extends Component {
         <Card />
         <Country />
         <Footer />
+        <Popup />
       </div>
     );
   }

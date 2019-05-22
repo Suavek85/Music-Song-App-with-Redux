@@ -14,7 +14,8 @@ import {
   REMOVE_FAV,
   ACTIVATE_LOADING,
   REQUEST_COUNTRY_SUCCESS,
-  REQUEST_SELECTED_COUNTRY_SUCCESS
+  REQUEST_SELECTED_COUNTRY_SUCCESS,
+  HIDE_POPUP
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
 import {
@@ -36,6 +37,23 @@ const initialStateCard = {
 
 const initialFavArray = {
   favsArray: []
+};
+
+const initialPopup = {
+  popupDisplay: false
+};
+
+
+
+export const handlePopup = (state = initialPopup, action = {}) => {
+  switch (action.type) {
+    case HIDE_POPUP:
+      return Object.assign({}, state, {
+        popupDisplay: action.payload
+      });
+    default:
+      return state;
+  }
 };
 
 export const handleSelectedCountry = (state = countrySelected, action = {}) => {
