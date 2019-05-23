@@ -16,7 +16,8 @@ import {
   addFav,
   removeFav,
   requestCountry,
-  requestSelectedCountry
+  requestSelectedCountry,
+  showPopup
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -28,7 +29,10 @@ const mapStateToProps = state => {
     cardShow: state.isCardShow.cardShow,
     favsArray: state.handleFavs.favsArray,
     countriesMain: state.handleCountries,
-    countrySelected: state.handleSelectedCountry
+    countrySelected: state.handleSelectedCountry,
+    popup: state.handlePopup.popupDisplay,
+    artist: state.handlePopup.urlArtist,
+    track: state.handlePopup.urlTrack
   };
 };
 
@@ -46,7 +50,9 @@ const mapDispatchToProps = dispatch => {
     onRequestCountries: (text, no) => dispatch(requestCountry(text, no)),
     onToggleCountryFav: text => dispatch(toggleCountryFav(text)),
     onRequestSelectedCountry: text => dispatch(requestSelectedCountry(text)),
-    onToggleCountrySelectedFav: text => dispatch(toggleCountrySelectedFav(text))
+    onToggleCountrySelectedFav: text =>
+      dispatch(toggleCountrySelectedFav(text)),
+    onShowPopup: (yes, artist, track) => dispatch(showPopup(yes, artist, track))
   };
 };
 
@@ -58,9 +64,18 @@ class Country extends Component {
       { code: "es", index: 2 }
     ].forEach(el => {
       this.props.onRequestCountries(el.code, el.index);
-      console.log(this.props.countriesMain);
     });
   }
+
+  onOpenPopup = event => {
+    console.log("open");
+    const artist =
+      event.target.previousSibling.previousSibling.innerHTML;
+    const track =
+      event.target.previousSibling.previousSibling
+        .previousSibling.previousSibling.innerHTML;
+    this.props.onShowPopup(true, artist, track);
+  };
 
   onCountryButtonClick = () => {
     //converting country name to country code
@@ -171,12 +186,14 @@ class Country extends Component {
         <CountriesList
           countries={countriesMain}
           onCountryFavClick={this.onCountryFavClick}
+          onOpenPopup={this.onOpenPopup}
         />
         <CountryList
           buttonClick={this.onCountryButtonClick}
           searchChange={onSearchCountryChange}
           countrySelected={countrySelected}
           onCountryFavClick={this.onSelectedCountryFavClick}
+          onOpenPopup={this.onOpenPopup}
         />
       </div>
     );

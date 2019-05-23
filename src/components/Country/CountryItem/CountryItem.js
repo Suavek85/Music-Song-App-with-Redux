@@ -54,6 +54,7 @@ const CountryItem = props => {
                     fadeLeft={props.fadeLeft}
                     showSongs={props.showSongs}
                     onCountryFavClick={props.onCountryFavClick}
+                    onOpenPopup={props.onOpenPopup}
                     el={el}
                   />
                 );

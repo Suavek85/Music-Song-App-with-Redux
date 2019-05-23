@@ -15,7 +15,8 @@ import {
   REMOVE_FAV,
   REQUEST_COUNTRY_SUCCESS,
   REQUEST_SELECTED_COUNTRY_SUCCESS,
-  HIDE_POPUP
+  HIDE_POPUP,
+  SHOW_POPUP,
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
@@ -23,6 +24,11 @@ import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 export const hidePopup = () => ({
   type: HIDE_POPUP,
   payload: false
+});
+
+export const showPopup = (yes, artist, track) => ({
+  type: SHOW_POPUP,
+  payload: { yes, artist, track }
 });
 
 export const setInput = text => ({

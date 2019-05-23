@@ -10,7 +10,8 @@ import {
   toggleCardFav,
   activateLoading,
   addFav,
-  removeFav
+  removeFav,
+  showPopup
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -20,7 +21,10 @@ const mapStateToProps = state => {
     isLoading: state.handleMusicCards.isLoading,
     isError: state.handleMusicCards.isError,
     cardShow: state.isCardShow.cardShow,
-    favsArray: state.handleFavs.favsArray
+    favsArray: state.handleFavs.favsArray,
+    popup: state.handlePopup.popupDisplay,
+    artist: state.handlePopup.urlArtist,
+    track: state.handlePopup.urlTrack
   };
 };
 
@@ -32,17 +36,23 @@ const mapDispatchToProps = dispatch => {
     onToggleCardFav: text => dispatch(toggleCardFav(text)),
     onActivateLoading: () => dispatch(activateLoading()),
     onAddFav: text => dispatch(addFav(text)),
-    onRemoveFavs: text => dispatch(removeFav(text))
+    onRemoveFavs: text => dispatch(removeFav(text)),
+    onShowPopup: (yes, artist, track) => dispatch(showPopup(yes, artist, track))
   };
 };
 
 class Card extends Component {
-
   componentDidMount() {
     this.props.onRequestMusic();
     this.props.onCardShow(true);
   }
-  
+
+  onOpenPopup = event => {
+    const artist = event.target.nextSibling.nextSibling.childNodes[1].innerHTML;
+    const track = event.target.nextSibling.nextSibling.childNodes[2].childNodes[1].innerHTML;
+    this.props.onShowPopup(true, artist, track);
+  };
+
   onCardFavClick = event => {
     //defining selected song
     const { cardShow } = this.props;
@@ -93,7 +103,13 @@ class Card extends Component {
   };
 
   render() {
-    const { input, musicStateItemList, favsArray, cardShow, isError } = this.props;
+    const {
+      input,
+      musicStateItemList,
+      favsArray,
+      cardShow,
+      isError
+    } = this.props;
     return (
       <div>
         <CardList
@@ -102,12 +118,14 @@ class Card extends Component {
           music={musicStateItemList}
           input={input}
           isError={isError}
+          onOpenPopup={this.onOpenPopup}
         />
         <FavList
           closeFavs={this.onCloseFavs}
           removeFavs={this.onRemoveFavsHandler}
           cardsShow={cardShow}
           music={favsArray}
+          onOpenPopup={this.onOpenPopup}
         />
       </div>
     );

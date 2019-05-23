@@ -1,6 +1,6 @@
 # Music Song App with Redux (IN PROGRESS)
 
-> Reactjs app with Redux for finding songs and adding them to your Favorites. IN PROGRESS
+> Reactjs app with Redux for finding songs, adding them to your Favorites and watching them on Youtube instantly.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@
 
 ## General info
 
-Reactjs app allowing to find current top 3 songs of any musician or band. And to add or remove them from the Favorites section. It also shows Brazil's, USA and UK Top 3 chart and allows to add those songs to Favorites section as well.
+Reactjs app allowing to find current top 3 songs of any musician or band. And to add or remove them from the Favorites section. It also shows Brazil's, USA and Spain's Top 3 chart and allows to add those songs to Favorites section as well. Songs can be viewed on Youtube.
 
 My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[🔨](https://mail.google.com/mail/e/1f528)
 
@@ -31,15 +31,15 @@ My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[
 
 - showing top 3 singles chart for Brazil, USA, Spain
 
-- finding top 3 singles chart for any country
+- displaying top 3 singles chart for any country
 
-- saving any of the above songs in the Favorite section 
+- saving searched songs in the Favorite section (Fav icon)
 
 - removing songs from the Favorite section
 
 - includes badge displaying number of songs in the Favorite section
 
-- watching any of the songs searched or saved in Favories on Youtube 
+- watching displayed songs (searched or saved in Favorites) instantly on a Youtube popup playlist (Youtube icon)
 
 
 ## Setup
@@ -56,6 +56,8 @@ To run this project, install it locally using npm:
 
 - Musixmatch API,
 
+- Youtube API,
+
 - Tachyons Css Toolkit,
 
 - Styled Icons,
@@ -66,7 +68,7 @@ To run this project, install it locally using npm:
 
 - Redux,
 
-- ES Lint Airbnb.
+- and more.
 
 ## Status
 

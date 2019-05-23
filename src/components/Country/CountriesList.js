@@ -24,6 +24,7 @@ const CountriesList = props => {
             fadeLeft={el.fadeLeft}
             showSongs={el.showSongs}
             onCountryFavClick={props.onCountryFavClick}
+            onOpenPopup={props.onOpenPopup}
           />
         );
       })}

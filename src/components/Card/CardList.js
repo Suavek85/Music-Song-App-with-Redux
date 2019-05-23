@@ -15,6 +15,7 @@ const CardList = props => {
             return (
               <CardItem
                 onFavClick={props.onFavClick}
+                onOpenPopup={props.onOpenPopup}
                 key={el.id}
                 id={el.id}
                 track={el.track}

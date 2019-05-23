@@ -1,12 +1,16 @@
 import React from "react";
 import "./Popup.css";
+import { youTubeUrl } from "../API";
 
 const PopupItem = props => {
   return (
     <div className="overlay">
       <div className="popup">
         <iframe
-          src="https://www.youtube.com/embed/E7wJTI-1dvQ"
+          src={youTubeUrl(
+            props.track,
+            props.artist
+          )}
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen

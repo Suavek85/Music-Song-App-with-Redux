@@ -15,7 +15,8 @@ import {
   ACTIVATE_LOADING,
   REQUEST_COUNTRY_SUCCESS,
   REQUEST_SELECTED_COUNTRY_SUCCESS,
-  HIDE_POPUP
+  HIDE_POPUP,
+  SHOW_POPUP
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
 import {
@@ -40,16 +41,22 @@ const initialFavArray = {
 };
 
 const initialPopup = {
-  popupDisplay: false
+  popupDisplay: false,
+  urlTrack: "Mama Say",
+  urlArtist: "Bloodhound Gang"
 };
-
-
 
 export const handlePopup = (state = initialPopup, action = {}) => {
   switch (action.type) {
     case HIDE_POPUP:
       return Object.assign({}, state, {
         popupDisplay: action.payload
+      });
+    case SHOW_POPUP:
+      return Object.assign({}, state, {
+        popupDisplay: action.payload.yes,
+        urlTrack: action.payload.track,
+        urlArtist: action.payload.artist
       });
     default:
       return state;
@@ -237,9 +244,12 @@ export const handleMusicCards = (state = musicState, action = {}) => {
         musicStateItemList: state.musicStateItemList.map((el, i) => {
           return {
             ...el,
-            track: action.payload.data.message.body.track_list[i].track.track_name,
-            album: action.payload.data.message.body.track_list[i].track.album_name,
-            artist: action.payload.data.message.body.track_list[i].track.artist_name,
+            track:
+              action.payload.data.message.body.track_list[i].track.track_name,
+            album:
+              action.payload.data.message.body.track_list[i].track.album_name,
+            artist:
+              action.payload.data.message.body.track_list[i].track.artist_name,
             id: action.payload.data.message.body.track_list[i].track.track_id,
             favClicked: false,
             addedToFav: false

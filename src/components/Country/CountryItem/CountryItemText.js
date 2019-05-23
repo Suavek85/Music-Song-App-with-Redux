@@ -2,7 +2,6 @@ import React from "react";
 import RedFavoriteFull from "../../Icons/FavoriteIconFull/FavoriteIconFull";
 import RedFavoriteEmpty from "../../Icons/FavoriteIcon/FavoriteIcon";
 import { YoutubeIconWhite } from "../../Icons/Youtube/Youtube";
-import { youTubeUrl } from "../../../containers/API";
 
 const CountryItemText = props => {
   return (
@@ -27,18 +26,9 @@ const CountryItemText = props => {
           <RedFavoriteEmpty />
         )}
       </span>
-      <a
-        href={youTubeUrl(
-          props.topSongs[props.el].track,
-          props.topSongs[props.el].artist
-        )}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ marginLeft: "5px" }}
-        className="fav-wrapper grow-hov"
-      >
+      <div className='fav-wrapper grow-hov' style={{ marginLeft: "5px" }} onClick={props.onOpenPopup}>
         <YoutubeIconWhite />
-      </a>
+      </div>
     </div>
   );
 };

@@ -4,7 +4,6 @@ import RedFavoriteEmpty from "../Icons/FavoriteIcon/FavoriteIcon";
 import RedFavoriteFull from "../Icons/FavoriteIconFull/FavoriteIconFull";
 import GreyBin from "../Icons/BinIcon/BinIcon";
 import { YoutubeIcon } from "../Icons/Youtube/Youtube";
-import { youTubeUrl } from "../../containers/API";
 import {
   leftStyle,
   secondLeftStyle,
@@ -23,15 +22,13 @@ const CardItem = props => {
       >
         {props.favClicked ? <RedFavoriteFull /> : <RedFavoriteEmpty />}
       </div>
-      <a
-        href={youTubeUrl(props.track, props.artist)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fav-wrapper grow-hov"
+      <div
         style={secondLeftStyle}
+        className="fav-wrapper grow-hov"
+        onClick={props.onOpenPopup}
       >
         <YoutubeIcon />
-      </a>
+      </div>
 
       <div
         onClick={props.removeFavs}
@@ -45,9 +42,11 @@ const CardItem = props => {
         <Logo style={logoStyle} />
         <h1 className="f3 mb2 pb3 dark-red">{props.track}</h1>
         <h2 className="f5 fw4 gray mt0">
-          <span className="dark-red">Artist:</span>
-          <br />
-          {props.artist}
+          <span className="dark-red">
+            Artist:
+            <br />
+          </span>
+          <span>{props.artist} </span>
         </h2>
         <h2 className="f5 fw4 gray mt0">
           <span className="dark-red">Album:</span>

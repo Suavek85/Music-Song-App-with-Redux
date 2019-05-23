@@ -22,6 +22,7 @@ const CountryList = props => {
             searchChange={props.searchChange}
             buttonClick={props.buttonClick}
             onCountryFavClick={props.onCountryFavClick}
+            onOpenPopup={props.onOpenPopup}
           />
         );
     })}

@@ -8,6 +8,8 @@ import {
 const mapStateToProps = state => {
   return {
     popup: state.handlePopup.popupDisplay,
+    artist: state.handlePopup.urlArtist,
+    track: state.handlePopup.urlTrack,
   };
 };
 
@@ -23,15 +25,11 @@ class Popup extends Component {
     this.props.onHidePopup();
   }
 
-  //onOpenPopup = () => {
-    //this.setState({popupDisplay: true})
-  //}
-  
   render() {
-    const {popup} = this.props;
+    const {popup, artist, track} = this.props;
     return (
       <div>
-      {popup ? <PopUpItem onClosePopup={this.onClosePopup} /> : null}
+      {popup ? <PopUpItem onClosePopup={this.onClosePopup} artist={artist} track={track}/> : null}
       </div>
     ) 
   }

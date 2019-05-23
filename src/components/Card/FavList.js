@@ -15,6 +15,7 @@ const FavList = props => {
             return (
               <CardItem
                 onFavClick={props.onFavClick}
+                onOpenPopup={props.onOpenPopup}
                 removeFavs={props.removeFavs}
                 key={el.id}
                 id={el.id}
