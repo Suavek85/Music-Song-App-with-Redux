@@ -10,7 +10,7 @@ export const specificCountryUrl = code => {
 }
 
 export const youTubeUrl = (song, artist) => {
-  return `http://www.youtube.com/embed?listType=search&list=${song}+${artist}`;
+  return `https://www.youtube.com/embed?listType=search&list=${song}+${artist}`;
 };
 
 //http://www.youtube.com/embed?listType=search&list=${song}+${artist}
