@@ -7,7 +7,7 @@ const Signup = () => {
     <article className="absolute w-5 bg-white tl pa4 black-80"
     style={{ top: "104%", right: "-2%", width: "300px" }}>
     <form className="relative" action="sign-up_submit" method="get" acceptCharset="utf-8">
-    <Link to="/" style={{ textDecoration: "none" }}>
+    <Link to="/Music-Song-App-with-Redux/" style={{ textDecoration: "none" }}>
           <BlackWindowClose />
         </Link>
       <fieldset id="sign_up" className="ba b--transparent ph0 mh0">

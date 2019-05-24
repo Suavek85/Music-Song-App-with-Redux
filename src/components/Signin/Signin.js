@@ -9,7 +9,7 @@ const Signin = () => {
       style={{ top: "104%", right: "-2%", width: "300px" }}
     >
       <form className="relative measure center">
-        <Link to={process.env.PUBLIC_URL + '/'} style={{ textDecoration: "none" }}>
+        <Link to="/Music-Song-App-with-Redux/" style={{ textDecoration: "none" }}>
           <BlackWindowClose />
         </Link>
 
@@ -50,7 +50,7 @@ const Signin = () => {
           />
         </div>
         <div className="lh-copy mt3">
-          <Link to={process.env.PUBLIC_URL + '/signup'} className="f6 link dim black db" style={{ textDecoration: "none" }}>
+          <Link to="/Music-Song-App-with-Redux/signup/" className="f6 link dim black db" style={{ textDecoration: "none" }}>
             Sign up
           </Link>
           <a href="#0" className="f6 link dim black db">
