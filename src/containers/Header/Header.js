@@ -99,10 +99,9 @@ class Header extends Component {
                         <DefaultUser />
                       </Link>
                     </span>
-                    <BrowserRouter basename="/Music-Song-App-with-Redux" />
-                    <Route path="/signin/" component={Signin} />
-                    <Route path="/signup/" component={Signup} />
-                    <Route path="/" />
+                    <Route path={process.env.PUBLIC_URL + '/signin'} component={Signin} />
+                    <Route path={process.env.PUBLIC_URL + '/signup'}  component={Signup} />
+                    <Route path={process.env.PUBLIC_URL + '/'}  />
                   </div>
                 </div>
               </nav>

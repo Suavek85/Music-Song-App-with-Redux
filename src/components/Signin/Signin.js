@@ -9,14 +9,14 @@ const Signin = () => {
       style={{ top: "104%", right: "-2%", width: "300px" }}
     >
       <form className="relative measure center">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to={process.env.PUBLIC_URL + '/'} style={{ textDecoration: "none" }}>
           <BlackWindowClose />
         </Link>
 
         <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
           <legend className="f4 fw6 ph0 mh0">Sign In</legend>
-          <div clasName="mt3">
-            <label className="db fw6 lh-copy f6" for="email-address">
+          <div className="mt3">
+            <label className="db fw6 lh-copy f6" htmlFor="email-address">
               Email
             </label>
             <input
@@ -50,7 +50,7 @@ const Signin = () => {
           />
         </div>
         <div className="lh-copy mt3">
-          <Link to="/signup/" className="f6 link dim black db" style={{ textDecoration: "none" }}>
+          <Link to={process.env.PUBLIC_URL + '/signup'} className="f6 link dim black db" style={{ textDecoration: "none" }}>
             Sign up
           </Link>
           <a href="#0" className="f6 link dim black db">
