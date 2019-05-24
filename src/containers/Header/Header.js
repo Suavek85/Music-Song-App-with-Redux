@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
 import "./Header.css";
 import Background from "../../components/Images/music-black-white.jpg";
 import PinkMusicIcon from "../../components/Icons/Logo/Logo";
@@ -98,8 +99,10 @@ class Header extends Component {
                         <DefaultUser />
                       </Link>
                     </span>
+                    <BrowserRouter basename="/Music-Song-App-with-Redux" />
                     <Route path="/signin/" component={Signin} />
                     <Route path="/signup/" component={Signup} />
+                    <Route path="/" />
                   </div>
                 </div>
               </nav>
