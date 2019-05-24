@@ -28,3 +28,16 @@ h1 span {
   background-color: #333333;
   padding: 5px 15px 10px 15px;
 }
+
+.hvr-icon {
+  -webkit-transition-duration: 1s;
+  transition-duration: 1s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+}
+.hvr-icon:hover  {
+  -webkit-transform: rotate(360deg);
+  transform: rotate(360deg);
+}

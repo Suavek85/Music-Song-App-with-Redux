@@ -18,7 +18,7 @@ const PopupItem = props => {
           height="100%"
           title="video"
         />
-        <div onClick={props.onClosePopup} className="close">×</div>
+        <div onClick={props.onClosePopup} className="close hvr-icon-spin hvr-icon">×</div>
       </div>
     </div>
   );
