@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Music-Song-App-with-Redux/precache-manifest.ef8470f4955ffc5ab6bc2a7e0599909a.js"
+  "https://suavek85.github.io/Music-Song-App-with-Redux/precache-manifest.7c69caa55157b741de941f4ee23bdf2e.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Music-Song-App-with-Redux/index.html", {
+workbox.routing.registerNavigationRoute("https://suavek85.github.io/Music-Song-App-with-Redux/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
