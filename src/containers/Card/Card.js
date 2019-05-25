@@ -48,8 +48,8 @@ class Card extends Component {
   }
 
   onOpenPopup = event => {
-    const artist = event.target.nextSibling.nextSibling.childNodes[1].innerHTML;
-    const track = event.target.nextSibling.nextSibling.childNodes[2].childNodes[1].innerHTML;
+    const artist = event.target.parentElement.nextSibling.nextSibling.childNodes[1].innerHTML;
+    const track = event.target.parentElement.nextSibling.nextSibling.childNodes[2].childNodes[1].innerHTML;
     this.props.onShowPopup(true, artist, track);
   };
 

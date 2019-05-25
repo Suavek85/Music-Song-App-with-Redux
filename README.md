@@ -20,7 +20,7 @@ Reactjs app allowing to find current top 3 songs of any musician or band. And to
 
 My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[🔨](https://mail.google.com/mail/e/1f528)
 
-[Live preview](https://suavek85.github.io/Music-Song-App-with-Redux/).
+[LIVE PREVIEW](https://suavek85.github.io/Music-Song-App-with-Redux/).
 
 [No-Redux version - Live preview](https://suavek85.github.io/Music-Song-App/).
 

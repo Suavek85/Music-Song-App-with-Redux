@@ -3,19 +3,6 @@
   font-family: 'Lato', sans-serif;
 }
 
-.fav-wrapper > * {
-  pointer-events: none;
-  cursor: pointer;
-}
-
-.fav-wrapper {
-  cursor: pointer;
-}
-
-.grow-hov:hover {
-  transform: scale(1.1);
-}
-
 .header-height {
   height: 90vh;
 }
@@ -29,6 +16,8 @@ h1 span {
   padding: 5px 15px 10px 15px;
 }
 
+/* Rotate effect */
+
 .hvr-icon {
   -webkit-transition-duration: 1s;
   transition-duration: 1s;
@@ -37,7 +26,25 @@ h1 span {
   -webkit-transition-timing-function: ease-in-out;
   transition-timing-function: ease-in-out;
 }
-.hvr-icon:hover  {
+
+.hvr-icon:hover {
   -webkit-transform: rotate(360deg);
   transform: rotate(360deg);
+}
+
+/* Grow on hover effect */
+
+.grow-hov:hover {
+  transform: scale(1.1);
+}
+
+/* Element inside div never a target for pointer events */
+
+.fav-wrapper>* {
+  pointer-events: none;
+  cursor: pointer;
+}
+
+.fav-wrapper {
+  cursor: pointer;
 }

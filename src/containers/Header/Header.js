@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import { BrowserRouter } from 'react-router-dom';
 import "./Header.css";
 import Background from "../../components/Images/music-black-white.jpg";
 import PinkMusicIcon from "../../components/Icons/Logo/Logo";
@@ -78,14 +77,14 @@ class Header extends Component {
                     onClick={this.onShowFavs}
                     className="relative f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer"
                   >
-                    Favorite songs
+                    FAV SONGS
                     <FavBadge countFavs={favsArray.length} />
                   </div>
                   <a
                     className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer"
                     href="#charts"
                   >
-                    Charts
+                    CHARTS
                   </a>
                   <div
                     className="relative dib "
@@ -107,7 +106,7 @@ class Header extends Component {
               </nav>
               <div className="tc-l mt4 mt5-m mt6-l ph3">
                 <h1 className="h1-clip">SONG FINDER</h1>
-                <h2 className="fw1 f3 white-80 mt3 mb4">
+                <h2 className="fw1 f3 washed-yellow mt3 mb4">
                   Find top 3 tracks of your artist:
                 </h2>
                 <Search

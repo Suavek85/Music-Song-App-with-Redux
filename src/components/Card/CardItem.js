@@ -4,30 +4,44 @@ import RedFavoriteEmpty from "../Icons/FavoriteIcon/FavoriteIcon";
 import RedFavoriteFull from "../Icons/FavoriteIconFull/FavoriteIconFull";
 import GreyBin from "../Icons/BinIcon/BinIcon";
 import { YoutubeIcon } from "../Icons/Youtube/Youtube";
+import { SearchDefault } from "../Icons/Search/Search";
+import { youTubeSearchUrl } from "../../containers/API";
 import {
-  leftStyle,
-  secondLeftStyle,
   rightStyle,
-  logoStyle
+  logoStyle,
+  iconStyle,
+  iconsLeftWrapperStyle
 } from "./CardItemStyle";
 
 const CardItem = props => {
   return (
     <article className=" w-20 w-40-m mh3 relative bg-near-white br3 pa2 pa4-ns mv5 ba b--black-10 shadow-4">
-      <div
-        className="fav-wrapper grow-hov"
-        style={leftStyle}
-        data-id={props.id}
-        onClick={props.onFavClick}
-      >
-        {props.favClicked ? <RedFavoriteFull /> : <RedFavoriteEmpty />}
-      </div>
-      <div
-        style={secondLeftStyle}
-        className="fav-wrapper grow-hov"
-        onClick={props.onOpenPopup}
-      >
-        <YoutubeIcon />
+      <div style={iconsLeftWrapperStyle}>
+        <div
+          className="fav-wrapper grow-hov"
+          style={iconStyle}
+          data-id={props.id}
+          onClick={props.onFavClick}
+        >
+          {props.favClicked ? <RedFavoriteFull /> : <RedFavoriteEmpty />}
+        </div>
+        <div
+          style={iconStyle}
+          className="fav-wrapper grow-hov"
+          onClick={props.onOpenPopup}
+        >
+          <YoutubeIcon />
+        </div>
+        <div className='grow-hov' style={iconStyle}>
+          <a
+            href={youTubeSearchUrl(props.track, props.artist)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="fav-wrapper grow-hov"
+          >
+            <SearchDefault />
+          </a>
+        </div>
       </div>
 
       <div
