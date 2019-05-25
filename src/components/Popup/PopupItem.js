@@ -1,6 +1,6 @@
 import React from "react";
 import "./Popup.css";
-import { youTubeUrl } from "../API";
+import { youTubeUrl } from "../../containers/API";
 
 const PopupItem = props => {
   return (

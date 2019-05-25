@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PopUpItem from "./PopupItem";
+import PopUpItem from "../../components/Popup/PopupItem";
 import { connect } from "react-redux";
 import {
   hidePopup
