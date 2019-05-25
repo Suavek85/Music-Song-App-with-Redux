@@ -1,11 +1,11 @@
-import React from "react";
+import React, {Fragment} from "react";
 import CardItem from "./CardItem";
 import { GreyWindowClose } from "../Icons/Close/Close";
 
 const FavList = props => {
   if (!props.cardsShow) {
     return (
-      <div>
+      <Fragment>
         <h1 className="f1 lh-title gray">
           Your Favorites
           <GreyWindowClose onClick={props.closeFavs}/>
@@ -28,7 +28,7 @@ const FavList = props => {
             );
           })}
         </div>
-      </div>
+      </Fragment>
     );
   }
   return null;

@@ -1,14 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
 import CountryItem from "./CountryItem/CountryItem";
 
 const CountriesList = props => {
-  
-  
   return (
-    <div>
-      <h1 id='charts' className="f1 lh-title light-gray">
-               <span>Top songs in...</span> 
-        </h1>
+    <Fragment>
+      <h1 id="charts" className="f1 lh-title light-gray">
+        <span>Top songs in...</span>
+      </h1>
       {props.countries.map(el => {
         return (
           <CountryItem
@@ -28,9 +26,8 @@ const CountriesList = props => {
           />
         );
       })}
-    </div>
+    </Fragment>
   );
 };
 
 export default CountriesList;
-

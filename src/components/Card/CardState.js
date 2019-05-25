@@ -15,11 +15,9 @@ const musicStateItemList = [
   musicStateItem(2)
 ];
 
-
 export const musicState = {
   isLoading: true,
   isError: false,
   musicStateItemList: musicStateItemList
 }
 
-//try to have is loading inside musicState?

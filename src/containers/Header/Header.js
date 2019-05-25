@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import scrollDownSmooth from "../../components/Animations/Animations";
 import HeaderItem from "../../components/Header/HeaderItem";
 
@@ -50,14 +50,14 @@ class Header extends Component {
   render() {
     const { favsArray, onSearchChange } = this.props;
     return (
-      <div>
+      <Fragment>
         <HeaderItem
           favsArray={favsArray}
           onShowFavs={this.onShowFavs}
           onSearchChange={onSearchChange}
           headerSearch={this.onHeaderSearch}
         />
-      </div>
+      </Fragment>
     );
   }
 }
