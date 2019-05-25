@@ -1,6 +1,6 @@
 # Music Song App with Redux (IN PROGRESS)
 
-> Reactjs app with Redux for finding songs, adding them to your Favorites and watching them on Youtube instantly.
+> React.js app with Redux for finding songs, adding them to your Favorites and watching them on Youtube instantly.
 
 ## Table of Contents
 
@@ -27,19 +27,21 @@ My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[
 
 ## Features
 
-- finding current top 3 songs of any musician or band
+- displaying current Top 3 songs of any musician or band
 
-- showing top 3 singles chart for Brazil, USA, Spain
+- showing current Top 3 Singles chart for Brazil, USA, Spain
 
 - displaying top 3 singles chart for any country
 
 - saving searched songs in the Favorite section (Fav icon)
 
-- removing songs from the Favorite section
+- removing songs from the Favorite section ( Bin Icon )
 
-- includes badge displaying number of songs in the Favorite section
+- includes badge displaying number of songs in the Favorite section ( in the Header )
 
-- watching displayed songs (searched or saved in Favorites) instantly on a Youtube popup playlist (Youtube icon)
+- watching displayed songs (searched or saved in Favorites) instantly on a Youtube popup playlist ( Youtube icon )
+
+- searching for displayed songs on Youtube service opened in a new tab ( Search icon )
 
 
 ## Setup
@@ -65,6 +67,8 @@ To run this project, install it locally using npm:
 - React Epic Spinners,
 
 - React Reveal,
+
+- React Router,
 
 - Redux,
 

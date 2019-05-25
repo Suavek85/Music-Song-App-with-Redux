@@ -2,6 +2,8 @@ import React from "react";
 import RedFavoriteFull from "../../Icons/FavoriteIconFull/FavoriteIconFull";
 import RedFavoriteEmpty from "../../Icons/FavoriteIcon/FavoriteIcon";
 import { YoutubeIconWhite } from "../../Icons/Youtube/Youtube";
+import { StyledSearchDefault } from "../../Icons/Search/Search";
+import { youTubeSearchUrl } from "../../../containers/API";
 
 const CountryItemText = props => {
   return (
@@ -26,8 +28,21 @@ const CountryItemText = props => {
           <RedFavoriteEmpty />
         )}
       </span>
-      <div className='fav-wrapper grow-hov' style={{ marginLeft: "5px" }} onClick={props.onOpenPopup}>
+      <div className="fav-wrapper grow-hov ml2" onClick={props.onOpenPopup}>
         <YoutubeIconWhite />
+      </div>
+      <div className="grow-hov ml2">
+        <a
+          href={youTubeSearchUrl(
+            props.topSongs[props.el].track,
+            props.topSongs[props.el].artist
+          )}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fav-wrapper grow-hov"
+        >
+          <StyledSearchDefault />
+        </a>
       </div>
     </div>
   );
