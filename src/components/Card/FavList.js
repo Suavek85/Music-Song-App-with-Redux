@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 import CardItem from "./CardItem";
 import { GreyWindowClose } from "../Icons/Close/Close";
 
@@ -8,7 +8,7 @@ const FavList = props => {
       <Fragment>
         <h1 className="f1 lh-title gray">
           Your Favorites
-          <GreyWindowClose onClick={props.closeFavs}/>
+          <GreyWindowClose onClick={props.closeFavs} />
         </h1>
         <div className="flex flex-wrap relative justify-center mb0">
           {props.music.map(el => {

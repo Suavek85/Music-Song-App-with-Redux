@@ -7,3 +7,12 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
 }
+
+.fade-appear {
+    opacity: 0.01;
+}
+
+.fade-appear.fade-appear-active {
+    opacity: 1;
+    transition: opacity 2500ms ease-in;
+}

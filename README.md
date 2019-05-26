@@ -66,11 +66,13 @@ To run this project, install it locally using npm:
 
 - React Epic Spinners,
 
+- React Transition Group,
+
 - React Reveal,
 
 - React Router,
 
-- Redux,
+- React Redux,
 
 - and more.
 

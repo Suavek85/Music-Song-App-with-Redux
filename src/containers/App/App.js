@@ -6,7 +6,6 @@ import Popup from "../Popup/Popup";
 import Footer from "../../components/Footer/Footer";
 import Spinner from "../../components/Animations/Spinner/Spinner";
 import "./App.css";
-
 import { connect } from "react-redux";
 
 const mapStateToProps = state => {
