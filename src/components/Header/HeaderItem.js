@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import Background from "../Images/music-black-white.jpg";
 import PinkMusicIcon from "../Icons/Logo/Logo";
 import DefaultUser from "../Icons/Profile/Profile";
@@ -8,7 +9,8 @@ import Signin from "../Signin/Signin";
 import Signup from "../Signin/Signup";
 import FavBadge from "../FavBadge/FavBadge";
 import "./Header.css";
-import { CSSTransition } from "react-transition-group";
+import "../Animations/Fade.css";
+
 
 const HeaderItem = props => {
   const backImageStyle = {

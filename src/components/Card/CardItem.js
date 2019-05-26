@@ -13,7 +13,7 @@ import {
   iconsLeftWrapperStyle
 } from "./CardItemStyle";
 import { CSSTransition } from "react-transition-group";
-import "./CardItem.css";
+import "../Animations/Fade.css";
 
 const CardItem = props => {
   return (
