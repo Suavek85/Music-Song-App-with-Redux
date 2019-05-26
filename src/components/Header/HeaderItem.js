@@ -66,7 +66,7 @@ const HeaderItem = props => {
                 in
                 classNames="fade"
                 appear={true}
-                timeout={2500}
+                timeout={700}
                 unmountOnExit
               >
                 <h1 className="h1-clip">SONG FINDER</h1>

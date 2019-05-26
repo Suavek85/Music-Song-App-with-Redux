@@ -14,5 +14,5 @@
 
 .fade-appear.fade-appear-active {
     opacity: 1;
-    transition: opacity 2500ms ease-in;
+    transition: opacity 700ms ease-in;
 }
