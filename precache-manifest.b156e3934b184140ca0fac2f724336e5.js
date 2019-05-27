@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Music-Song-App-with-Redux/static/media/music-black-white-rotate.7223fc14.jpg"
   },
   {
-    "revision": "0148a0f7e483c129e680",
+    "revision": "37cd70cfe8b7814e7d89",
     "url": "/Music-Song-App-with-Redux/static/css/main.281be944.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/Music-Song-App-with-Redux/static/media/music-black-white.1c419989.jpg"
   },
   {
-    "revision": "0148a0f7e483c129e680",
-    "url": "/Music-Song-App-with-Redux/static/js/main.755e5acc.chunk.js"
+    "revision": "37cd70cfe8b7814e7d89",
+    "url": "/Music-Song-App-with-Redux/static/js/main.fb8b66b4.chunk.js"
   },
   {
     "revision": "2d2c23edfec4cc77a30f08f1030a7925",
@@ -40,7 +40,7 @@ self.__precacheManifest = [
     "url": "/Music-Song-App-with-Redux/static/media/generic.17e4dd24.jpg"
   },
   {
-    "revision": "98d6b898263888b57f42277c46fee8e5",
+    "revision": "17319edf883a2cc4b2feb82164a5b36a",
     "url": "/Music-Song-App-with-Redux/index.html"
   }
 ];

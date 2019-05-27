@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Music-Song-App-with-Redux/precache-manifest.3b135628fca33f183948ad09555c48bf.js"
+  "/Music-Song-App-with-Redux/precache-manifest.b156e3934b184140ca0fac2f724336e5.js"
 );
 
 workbox.clientsClaim();
