@@ -11,9 +11,7 @@ import FavBadge from "../FavBadge/FavBadge";
 import "./Header.css";
 import "../Animations/Fade.css";
 
-
 const HeaderItem = props => {
-  
   const backImageStyle = {
     backgroundImage: `url(${Background})`
   };
@@ -21,7 +19,10 @@ const HeaderItem = props => {
   return (
     <Router>
       <header className="sans-serif mb5 vh-100">
-        <div className="cover bg-left bg-center-l h-inherit" style={backImageStyle}>
+        <div
+          className="cover bg-left bg-center-l h-inherit"
+          style={backImageStyle}
+        >
           <div className="bg-black-80 pb5 pb6-m pb7-l h-inherit">
             <nav className="dt w-100 mw8 center">
               <div className="dtc w2 v-mid pa3">
@@ -83,6 +84,7 @@ const HeaderItem = props => {
                 headerSearch={headerSearch}
                 input={input}
                 onAutocomplete={props.onAutocomplete}
+                autocompleteShow={props.autocompleteShow}
               />
             </div>
           </div>

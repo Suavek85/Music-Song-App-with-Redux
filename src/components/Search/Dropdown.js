@@ -1,17 +1,5 @@
 import React from "react";
-
-const testMusicArr = [
-  "Madonna",
-  "Britney Spears",
-  "Malumba",
-  "Genesis",
-  "Metallica",
-  "Elvis Presley",
-  "Taylor Swift",
-  "Eminem",
-  "Elton John",
-  "Nirvana"
-];
+import {testMusicArr} from './MusicArtistsList'
 
 export const Dropdown = props => {
   let filteredSongs = testMusicArr.filter(el => {
@@ -24,6 +12,7 @@ export const Dropdown = props => {
   if (
     props.input.length > 1 &&
     props.input !== "Justin Bieber" &&
+    props.autocompleteShow &&
     filteredSongs.length
   ) {
     return (

@@ -9,7 +9,8 @@ import {
   requestSpecificMusic,
   isCardShow,
   activateLoading,
-  setAutocomplete
+  setAutocomplete,
+  showAutocomplete
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -18,6 +19,7 @@ const mapStateToProps = state => {
     inputCountry: state.searchCountry.inputCountry,
     musicStateItemList: state.handleMusicCards.musicStateItemList,
     cardShow: state.isCardShow.cardShow,
+    autocompleteShow: state.handleAutocomplete.autocompleteShow,
     favsArray: state.handleFavs.favsArray
   };
 };
@@ -30,7 +32,8 @@ const mapDispatchToProps = dispatch => {
     onRequestMusic: () => dispatch(requestMusic()),
     onRequestSpecificMusic: input => dispatch(requestSpecificMusic(input)),
     onCardShow: text => dispatch(isCardShow(text)),
-    onActivateLoading: () => dispatch(activateLoading())
+    onActivateLoading: () => dispatch(activateLoading()),
+    onShowAutocomplete: text => dispatch(showAutocomplete(text))
   };
 };
 
@@ -38,6 +41,12 @@ class Header extends Component {
   onAutocomplete = event => {
     document.getElementById("search-input").value = event.target.textContent;
     this.props.onAutocompleteSelect(event);
+    this.props.onShowAutocomplete(false);
+  };
+
+  searchChangleHandler = event => {
+    this.props.onSearchChange(event);
+    this.props.onShowAutocomplete(true);
   };
 
   onHeaderSearch = () => {
@@ -56,16 +65,23 @@ class Header extends Component {
   };
 
   render() {
-    const { favsArray, onSearchChange, input } = this.props;
+    const { favsArray, input, autocompleteShow } = this.props;
+    const {
+      searchChangleHandler,
+      onHeaderSearch,
+      onAutocomplete,
+      onShowFavs
+    } = this;
     return (
       <Fragment>
         <HeaderItem
           favsArray={favsArray}
-          onShowFavs={this.onShowFavs}
-          onSearchChange={onSearchChange}
-          headerSearch={this.onHeaderSearch}
+          onShowFavs={onShowFavs}
+          onSearchChange={searchChangleHandler}
+          headerSearch={onHeaderSearch}
           input={input}
-          onAutocomplete={this.onAutocomplete}
+          onAutocomplete={onAutocomplete}
+          autocompleteShow={autocompleteShow}
         />
       </Fragment>
     );

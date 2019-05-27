@@ -23,7 +23,7 @@ const Search = props => {
           Search
         </button>
       </form>
-      <Dropdown input={props.input} onAutocomplete={props.onAutocomplete} />
+      <Dropdown input={props.input} onAutocomplete={props.onAutocomplete} autocompleteShow={props.autocompleteShow} />
     </div>
   );
 };

@@ -27,21 +27,21 @@ My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[
 
 ## Features
 
-- displaying current Top 3 songs of any musician or band
+- displaying current Top 3 songs of any musician or band (with autocomplete for around 50 most popular artists/bands),
 
-- showing current Top 3 Singles chart for Brazil, USA, Spain
+- showing current Top 3 Singles chart for Brazil, USA, Spain,
 
-- displaying top 3 singles chart for any country
+- displaying top 3 singles chart for any country,
 
-- saving searched songs in the Favorite section (Fav icon)
+- saving searched songs in the Favorite section (Fav icon),
 
-- removing songs from the Favorite section ( Bin Icon )
+- removing songs from the Favorite section ( Bin Icon ),
 
-- includes badge displaying number of songs in the Favorite section ( in the Header )
+- includes badge displaying number of songs in the Favorite section ( in the Header ),
 
-- watching displayed songs (searched or saved in Favorites) instantly on a Youtube popup playlist ( Youtube icon )
+- watching displayed songs (searched or saved in Favorites) instantly on a Youtube popup playlist ( Youtube icon ),
 
-- searching for displayed songs on Youtube service opened in a new tab ( Search icon )
+- searching for displayed songs on Youtube service opened in a new tab ( Search icon ).
 
 
 ## Setup

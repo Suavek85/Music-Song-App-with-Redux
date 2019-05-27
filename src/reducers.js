@@ -17,7 +17,8 @@ import {
   REQUEST_SELECTED_COUNTRY_SUCCESS,
   HIDE_POPUP,
   SHOW_POPUP,
-  CHANGE_AUTOCOMPLETE
+  CHANGE_AUTOCOMPLETE,
+  AUTOCOMPLETE_SHOWS
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
 import {
@@ -45,6 +46,21 @@ const initialPopup = {
   popupDisplay: false,
   urlTrack: "Mama Say",
   urlArtist: "Bloodhound Gang"
+};
+
+const initialAutocomplete = {
+  autocompleteShow: false,
+};
+
+export const handleAutocomplete = (state = initialAutocomplete, action = {}) => {
+  switch (action.type) {
+    case AUTOCOMPLETE_SHOWS:
+      return Object.assign({}, state, {
+        autocompleteShow: action.payload
+      });
+    default:
+      return state;
+  }
 };
 
 export const handlePopup = (state = initialPopup, action = {}) => {

@@ -17,10 +17,16 @@ import {
   REQUEST_SELECTED_COUNTRY_SUCCESS,
   HIDE_POPUP,
   SHOW_POPUP,
-  CHANGE_AUTOCOMPLETE
+  CHANGE_AUTOCOMPLETE,
+  AUTOCOMPLETE_SHOWS
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
+
+export const showAutocomplete = (text) => ({
+  type: AUTOCOMPLETE_SHOWS,
+  payload: text
+});
 
 export const hidePopup = () => ({
   type: HIDE_POPUP,
