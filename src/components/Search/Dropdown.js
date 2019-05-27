@@ -4,14 +4,14 @@ import {testMusicArr} from './MusicArtistsList'
 export const Dropdown = props => {
   let filteredSongs = testMusicArr.filter(el => {
     return (
-      el.slice(0, props.input.length) ===
-      props.input.slice(0, props.input.length)
+      el.slice(0, props.input.length).toUpperCase() ===
+      props.input.slice(0, props.input.length).toUpperCase()
     );
   });
 
   if (
     props.input.length > 1 &&
-    props.input !== "Justin Bieber" &&
+    //props.input !== "Justin Bieber" &&
     props.autocompleteShow &&
     filteredSongs.length
   ) {

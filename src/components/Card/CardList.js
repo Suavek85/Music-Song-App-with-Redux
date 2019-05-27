@@ -7,7 +7,7 @@ const CardList = props => {
       <Fragment>
         {props.isError ? (
           <h1 className="f1 lh-title light-gray">
-            Oops an error. Try reloading the page.
+            Oops an error. We seem to be too busy now. Try reloading the page.
           </h1>
         ) : (
           <h1 className="f1 lh-title light-gray">

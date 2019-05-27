@@ -39,5 +39,6 @@ export const testMusicArr = [
   "Aerosmith",
   "Red Hot Chili Peppers",
   "Maroon 5",
-  "Journey"
+  "Journey",
+  "Beatles"
 ];
