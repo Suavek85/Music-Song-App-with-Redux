@@ -1,13 +1,16 @@
-import React, { Fragment } from "react";
+import React from "react";
 import "./Search.css";
 import { Dropdown } from "./Dropdown";
 
 const Search = props => {
   return (
-    <div className="flex flex-column items-start" style={{
-      width: '500px',
-      margin: 'auto'
-  }}>
+    <div
+      className="flex flex-column items-start"
+      style={{
+        width: "500px",
+        margin: "auto"
+      }}
+    >
       <form className="search white-70 mw6" action="">
         <input
           type="search"
@@ -19,7 +22,12 @@ const Search = props => {
           Search
         </button>
       </form>
-   
+      {/*
+
+<Dropdown input={props.input}/>
+
+      */}
+      
     </div>
   );
 };

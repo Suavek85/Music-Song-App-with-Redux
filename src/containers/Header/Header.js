@@ -32,6 +32,13 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
+  //onAutocomplete = () => {
+   // this.props.onSearchChange();
+    //if (this.props.input.length > 1) {
+      //console.log("ready to autocomplete");
+    //}
+  //};
+
   onHeaderSearch = () => {
     this.props.onActivateLoading();
     this.props.onCardShow(true);
@@ -40,6 +47,7 @@ class Header extends Component {
   };
 
   onShowFavs = () => {
+
     if (this.props.favsArray.length === 0) {
       return;
     }
@@ -48,7 +56,7 @@ class Header extends Component {
   };
 
   render() {
-    const { favsArray, onSearchChange } = this.props;
+    const { favsArray, onSearchChange, input } = this.props;
     return (
       <Fragment>
         <HeaderItem
@@ -56,6 +64,7 @@ class Header extends Component {
           onShowFavs={this.onShowFavs}
           onSearchChange={onSearchChange}
           headerSearch={this.onHeaderSearch}
+          input={input}
         />
       </Fragment>
     );

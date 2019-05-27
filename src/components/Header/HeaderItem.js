@@ -16,12 +16,12 @@ const HeaderItem = props => {
   const backImageStyle = {
     backgroundImage: `url(${Background})`
   };
-  const { favsArray, onSearchChange, headerSearch, onShowFavs } = props;
+  const { favsArray, onSearchChange, headerSearch, onShowFavs, input } = props;
   return (
     <Router>
-      <header className="sans-serif mb5">
-        <div className="cover bg-left bg-center-l " style={backImageStyle}>
-          <div className="bg-black-80 pb5 pb6-m pb7-l ">
+      <header className="sans-serif mb5 vh-100">
+        <div className="cover bg-left bg-center-l h-inherit" style={backImageStyle}>
+          <div className="bg-black-80 pb5 pb6-m pb7-l h-inherit">
             <nav className="dt w-100 mw8 center">
               <div className="dtc w2 v-mid pa3">
                 <a href="/" className="dib w3 h3 pa1 grow-large ">
@@ -80,6 +80,7 @@ const HeaderItem = props => {
               <Search
                 searchChange={onSearchChange}
                 headerSearch={headerSearch}
+                input={input}
               />
             </div>
           </div>
