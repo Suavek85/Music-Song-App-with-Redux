@@ -17,6 +17,7 @@ import {
   REQUEST_SELECTED_COUNTRY_SUCCESS,
   HIDE_POPUP,
   SHOW_POPUP,
+  CHANGE_AUTOCOMPLETE
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
@@ -36,11 +37,15 @@ export const setInput = text => ({
   payload: text
 });
 
+export const setAutocomplete = text => ({
+  type: CHANGE_AUTOCOMPLETE,
+  payload: text
+});
+
 export const setInputCountry = text => ({
   type: CHANGE_INPUT_COUNTRY,
   payload: text
 });
-
 
 export const requestMusic = () => dispatch => {
   axios.get(genericUrl)

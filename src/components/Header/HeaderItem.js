@@ -13,6 +13,7 @@ import "../Animations/Fade.css";
 
 
 const HeaderItem = props => {
+  
   const backImageStyle = {
     backgroundImage: `url(${Background})`
   };
@@ -81,6 +82,7 @@ const HeaderItem = props => {
                 searchChange={onSearchChange}
                 headerSearch={headerSearch}
                 input={input}
+                onAutocomplete={props.onAutocomplete}
               />
             </div>
           </div>

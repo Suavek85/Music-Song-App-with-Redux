@@ -8,7 +8,8 @@ import {
   requestMusic,
   requestSpecificMusic,
   isCardShow,
-  activateLoading
+  activateLoading,
+  setAutocomplete
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -24,6 +25,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onSearchChange: event => dispatch(setInput(event.target.value)),
+    onAutocompleteSelect: event =>
+      dispatch(setAutocomplete(event.target.textContent)),
     onRequestMusic: () => dispatch(requestMusic()),
     onRequestSpecificMusic: input => dispatch(requestSpecificMusic(input)),
     onCardShow: text => dispatch(isCardShow(text)),
@@ -32,12 +35,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
-  //onAutocomplete = () => {
-   // this.props.onSearchChange();
-    //if (this.props.input.length > 1) {
-      //console.log("ready to autocomplete");
-    //}
-  //};
+  onAutocomplete = event => {
+    document.getElementById("search-input").value = event.target.textContent;
+    this.props.onAutocompleteSelect(event);
+  };
 
   onHeaderSearch = () => {
     this.props.onActivateLoading();
@@ -47,7 +48,6 @@ class Header extends Component {
   };
 
   onShowFavs = () => {
-
     if (this.props.favsArray.length === 0) {
       return;
     }
@@ -65,6 +65,7 @@ class Header extends Component {
           onSearchChange={onSearchChange}
           headerSearch={this.onHeaderSearch}
           input={input}
+          onAutocomplete={this.onAutocomplete}
         />
       </Fragment>
     );

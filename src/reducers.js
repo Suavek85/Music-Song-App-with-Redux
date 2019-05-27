@@ -16,7 +16,8 @@ import {
   REQUEST_COUNTRY_SUCCESS,
   REQUEST_SELECTED_COUNTRY_SUCCESS,
   HIDE_POPUP,
-  SHOW_POPUP
+  SHOW_POPUP,
+  CHANGE_AUTOCOMPLETE
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
 import {
@@ -304,6 +305,10 @@ export const isCardShow = (state = initialStateCard, action = {}) => {
 export const searchMusic = (state = initialStateSearch, action = {}) => {
   switch (action.type) {
     case CHANGE_INPUT:
+      return Object.assign({}, state, {
+        input: action.payload
+      });
+      case CHANGE_AUTOCOMPLETE:
       return Object.assign({}, state, {
         input: action.payload
       });

@@ -11,23 +11,19 @@ const Search = props => {
         margin: "auto"
       }}
     >
-      <form className="search white-70 mw6" action="">
+      <form className="search white-70 mw6" autoComplete="off" action="">
         <input
           type="search"
           onChange={props.searchChange}
           placeholder="Justin Bieber"
+          id="search-input"
           required
         />
         <button type="button" onClick={props.headerSearch}>
           Search
         </button>
       </form>
-      {/*
-
-<Dropdown input={props.input}/>
-
-      */}
-      
+      <Dropdown input={props.input} onAutocomplete={props.onAutocomplete} />
     </div>
   );
 };
