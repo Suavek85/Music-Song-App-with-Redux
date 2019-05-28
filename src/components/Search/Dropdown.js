@@ -1,5 +1,5 @@
 import React from "react";
-import {testMusicArr} from './MusicArtistsList'
+import { testMusicArr } from "./MusicArtistsList";
 
 export const Dropdown = props => {
   let filteredSongs = testMusicArr.filter(el => {
@@ -25,10 +25,11 @@ export const Dropdown = props => {
             return (
               <li
                 style={{ height: "40px", padding: "10px", borderTop: "none" }}
-                class="ph3 pointer bb bg-white black"
+                className="ph3 pointer bb bg-white black grey-back"
                 onClick={props.onAutocomplete}
               >
-                {el}
+                <b>{el.slice(0, props.input.length)}</b>
+                {el.slice(props.input.length)}
               </li>
             );
           })}

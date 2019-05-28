@@ -27,7 +27,7 @@ My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[
 
 ## Features
 
-- displaying current Top 3 songs of any musician or band (with autocomplete for around 50 most popular artists/bands),
+- displaying current Top 3 songs of any musician or band (with autocomplete for around 200 most popular artists/bands),
 
 - showing current Top 3 Singles chart for Brazil, USA, Spain,
 

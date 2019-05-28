@@ -38,25 +38,26 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
-  onAutocomplete = event => {
+  
+  onAutocompleteHandler = event => {
     document.getElementById("search-input").value = event.target.textContent;
     this.props.onAutocompleteSelect(event);
     this.props.onShowAutocomplete(false);
   };
 
-  searchChangleHandler = event => {
+  onSearchChangeHandler = event => {
     this.props.onSearchChange(event);
     this.props.onShowAutocomplete(true);
   };
 
-  onHeaderSearch = () => {
+  onHeaderSearchHandler = () => {
     this.props.onActivateLoading();
     this.props.onCardShow(true);
     this.props.onRequestSpecificMusic(this.props.input);
     scrollDownSmooth();
   };
 
-  onShowFavs = () => {
+  onShowFavsHadler = () => {
     if (this.props.favsArray.length === 0) {
       return;
     }
@@ -67,20 +68,20 @@ class Header extends Component {
   render() {
     const { favsArray, input, autocompleteShow } = this.props;
     const {
-      searchChangleHandler,
-      onHeaderSearch,
-      onAutocomplete,
-      onShowFavs
+      onSearchChangeHandler,
+      onHeaderSearchHandler,
+      onAutocompleteHandler,
+      onShowFavsHadler
     } = this;
     return (
       <Fragment>
         <HeaderItem
           favsArray={favsArray}
-          onShowFavs={onShowFavs}
-          onSearchChange={searchChangleHandler}
-          headerSearch={onHeaderSearch}
+          onShowFavs={onShowFavsHadler}
+          onSearchChange={onSearchChangeHandler}
+          headerSearch={onHeaderSearchHandler}
           input={input}
-          onAutocomplete={onAutocomplete}
+          onAutocomplete={onAutocompleteHandler}
           autocompleteShow={autocompleteShow}
         />
       </Fragment>
