@@ -30,10 +30,10 @@ const HeaderItem = props => {
                   <PinkMusicIcon />
                 </a>
               </div>
-              <div className="dtc v-mid tr pa3">
+              <div className="dtc v-mid tr pa3 flex items-end justify-end">
                 <div
                   onClick={onShowFavs}
-                  className="relative f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer"
+                  className="relative f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 pointer"
                 >
                   FAV SONGS
                   <FavBadge countFavs={favsArray.length} />

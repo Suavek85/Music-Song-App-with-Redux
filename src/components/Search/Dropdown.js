@@ -28,7 +28,7 @@ export const Dropdown = props => {
                 className="ph3 pointer bb bg-white black grey-back"
                 onClick={props.onAutocomplete}
               >
-                <b>{el.slice(0, props.input.length)}</b>
+                <span style={{color: 'red'}}>{el.slice(0, props.input.length)}</span>
                 {el.slice(props.input.length)}
               </li>
             );
