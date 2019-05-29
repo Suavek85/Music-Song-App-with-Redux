@@ -8,6 +8,7 @@ import Search from "../Search/Search";
 import Signin from "../Signin/Signin";
 import Signup from "../Signin/Signup";
 import FavBadge from "../FavBadge/FavBadge";
+import MusicPlayer from "../Icons/MusicPlayer/MusicPlayer";
 import "./Header.css";
 import "../Animations/Fade.css";
 
@@ -29,6 +30,7 @@ const HeaderItem = props => {
                 <a href="/" className="dib w3 h3 pa1 grow-large ">
                   <PinkMusicIcon />
                 </a>
+               {/*<MusicPlayer />*/ } 
               </div>
               <div className="dtc v-mid tr pa3 flex items-end justify-end">
                 <div
@@ -39,7 +41,7 @@ const HeaderItem = props => {
                   <FavBadge countFavs={favsArray.length} />
                 </div>
                 <a
-                  className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer"
+                  className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph2 pointer"
                   href="#charts"
                 >
                   CHARTS

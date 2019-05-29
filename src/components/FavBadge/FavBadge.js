@@ -2,7 +2,7 @@ import React from "react";
 
 const FavBadge = props => {
   return (
-    <svg width="30" height="30">
+    <svg style={{marginLeft: "-3px"}} width="30" height="30">
       <defs>
         <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop
@@ -18,14 +18,14 @@ const FavBadge = props => {
       <circle
         cx="15"
         cy="15"
-        r="11"
+        r="9"
         stroke="white"
         stroke-width="1"
         fill="url(#grad1)"
       />
       <text
         fill="#ffffff"
-        font-size="14"
+        font-size="11"
         font-family="Verdana"
         x="50%"
         y="55%"
