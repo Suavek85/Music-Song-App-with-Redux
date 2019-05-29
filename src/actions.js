@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 import {
   CHANGE_INPUT,
   REQUEST_MUSIC_SUCCESS,
@@ -22,8 +22,7 @@ import {
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
-
-export const showAutocomplete = (text) => ({
+export const showAutocomplete = text => ({
   type: AUTOCOMPLETE_SHOWS,
   payload: text
 });
@@ -54,55 +53,55 @@ export const setInputCountry = text => ({
 });
 
 export const requestMusic = () => dispatch => {
-  axios.get(genericUrl)
-  .then(res => {
-    dispatch({
-      type: REQUEST_MUSIC_SUCCESS,
+  axios
+    .get(genericUrl)
+    .then(res => {
+      dispatch({
+        type: REQUEST_MUSIC_SUCCESS,
         payload: res
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: REQUEST_MUSIC_ERROR
+      });
     });
-  })
-  .catch(error => {
-    console.log(error);
-    dispatch({
-      type: REQUEST_MUSIC_ERROR
-    });
-  })
 };
 
 export const requestSpecificMusic = input => dispatch => {
-  axios.get(specificUrl(input))
-  .then(res => {
-    dispatch({
-      type: REQUEST_MUSIC_SPECIFIC_SUCCESS,
+  axios
+    .get(specificUrl(input))
+    .then(res => {
+      dispatch({
+        type: REQUEST_MUSIC_SPECIFIC_SUCCESS,
         payload: res
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: REQUEST_MUSIC_SPECIFIC_ERROR
+      });
     });
-  })
-  .catch(error => {
-    console.log(error);
-    dispatch({
-      type: REQUEST_MUSIC_SPECIFIC_ERROR,
-    });
-  })
 };
 
-export const requestSelectedCountry = (text) => dispatch => {
-  axios.get(specificCountryUrl(text))
-  .then(res => {
+export const requestSelectedCountry = text => dispatch => {
+  axios.get(specificCountryUrl(text)).then(res => {
     dispatch({
       type: REQUEST_SELECTED_COUNTRY_SUCCESS,
-      payload:  res, 
+      payload: res
     });
-  })
+  });
 };
 
 export const requestCountry = (text, no) => dispatch => {
-  axios.get(specificCountryUrl(text))
-  .then(res => {
+  axios.get(specificCountryUrl(text)).then(res => {
     dispatch({
       type: REQUEST_COUNTRY_SUCCESS,
-        payload: { res, no }
+      payload: { res, no }
     });
-  })
+  });
 };
 
 export const isCardShow = text => ({

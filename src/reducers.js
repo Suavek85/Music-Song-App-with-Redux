@@ -49,10 +49,13 @@ const initialPopup = {
 };
 
 const initialAutocomplete = {
-  autocompleteShow: false,
+  autocompleteShow: false
 };
 
-export const handleAutocomplete = (state = initialAutocomplete, action = {}) => {
+export const handleAutocomplete = (
+  state = initialAutocomplete,
+  action = {}
+) => {
   switch (action.type) {
     case AUTOCOMPLETE_SHOWS:
       return Object.assign({}, state, {
@@ -324,7 +327,7 @@ export const searchMusic = (state = initialStateSearch, action = {}) => {
       return Object.assign({}, state, {
         input: action.payload
       });
-      case CHANGE_AUTOCOMPLETE:
+    case CHANGE_AUTOCOMPLETE:
       return Object.assign({}, state, {
         input: action.payload
       });

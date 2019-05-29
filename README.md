@@ -37,7 +37,7 @@ My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[
 
 - removing songs from the Favorite section ( Bin Icon ),
 
-- includes badge displaying number of songs in the Favorite section ( in the Header ),
+- includes an SVG badge displaying number of songs in the Favorite section ( in the Header ),
 
 - watching displayed songs (searched or saved in Favorites) instantly on a Youtube popup playlist ( Youtube icon ),
 

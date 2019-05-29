@@ -1,33 +1,40 @@
 import React from "react";
 
-const FavBadge = ( props ) => {
-  const wrapperStyle = {
-    width: "18px",
-    height: "18px",
-    top: "-5%",
-    right: "-3%",
-    backgroundImage: "linear-gradient(to bottom, #fc9f8a, #fa623f)"
-  };
-
-  const numbStyle = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%,-50%)",
-    border: "0,5px solid transparent",
-    textShadow: "0 1px rgba(0, 0, 0, 0.25)",
-    color: "white"
-  };
-
+const FavBadge = props => {
   return (
-    <div
-      style={wrapperStyle}
-      className="tc br-100 db absolute pa1 br-100 ba"
-    >
-      <span className="f8" style={numbStyle}>
+    <svg width="30" height="30">
+      <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop
+            offset="0%"
+            style={{ stopColor: "rgb(252, 159, 138)", stopOpacity: 1 }}
+          />
+          <stop
+            offset="100%"
+            style={{ stopColor: "rgb(255,0,0)", stopOpacity: 1 }}
+          />
+        </linearGradient>
+      </defs>
+      <circle
+        cx="15"
+        cy="15"
+        r="11"
+        stroke="white"
+        stroke-width="1"
+        fill="url(#grad1)"
+      />
+      <text
+        fill="#ffffff"
+        font-size="14"
+        font-family="Verdana"
+        x="50%"
+        y="55%"
+        dominant-baseline="middle"
+        text-anchor="middle"
+      >
         {props.countFavs}
-      </span>
-    </div>
+      </text>
+    </svg>
   );
 };
 
