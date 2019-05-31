@@ -25,12 +25,9 @@ const HeaderItem = props => {
           style={backImageStyle}
         >
           <div className="bg-black-80 pb5 pb6-m pb7-l h-inherit">
-            <nav className="dt w-100 mw8 center">
+            <nav className="dt w-100 mw8 center flex items-center justify-between">
               <div className="dtc w2 v-mid pa3">
-                <a href="/" className="dib w3 h3 pa1 grow-large ">
-                  <PinkMusicIcon />
-                </a>
-               {/*<MusicPlayer />*/ } 
+              <MusicPlayer />
               </div>
               <div className="dtc v-mid tr pa3 flex items-end justify-end">
                 <div

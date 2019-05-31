@@ -43,6 +43,8 @@ My own idea![🤓](https://mail.google.com/mail/e/1f913), created from scratch.[
 
 - searching for displayed songs on Youtube service opened in a new tab ( Search icon ).
 
+- animated logo.
+
 
 ## Setup
 
@@ -73,6 +75,8 @@ To run this project, install it locally using npm:
 - React Router,
 
 - React Redux,
+
+- GSAP,
 
 - and more.
 
