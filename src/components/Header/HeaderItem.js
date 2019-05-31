@@ -41,7 +41,7 @@ const HeaderItem = props => {
                   <FavBadge countFavs={favsArray.length} />
                 </div>
                 <a
-                  className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph2 pointer"
+                  className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer "
                   href="#charts"
                 >
                   CHARTS
