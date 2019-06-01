@@ -2,8 +2,8 @@ import React from "react";
 import { TimelineMax } from "gsap/all";
 import { Power2, Bounce, Circ } from "gsap/TweenMax";
 
-var tl = new TimelineMax();
-window.onload = function() {
+export const animateLogo = () => {
+  var tl = new TimelineMax();
   tl.delay(1.5)
     .from("#background", 1.5, {
       scaleY: 0,

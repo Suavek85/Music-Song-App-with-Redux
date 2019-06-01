@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   CHANGE_INPUT,
   REQUEST_MUSIC_SUCCESS,
+  REQUEST_MUSIC_LOADING,
   REQUEST_MUSIC_ERROR,
   CARD_SHOWS,
   TOGGLE_CARD_FAV,
@@ -50,6 +51,10 @@ export const setAutocomplete = text => ({
 export const setInputCountry = text => ({
   type: CHANGE_INPUT_COUNTRY,
   payload: text
+});
+
+export const requestMusicLoading = () => ({
+  type: REQUEST_MUSIC_LOADING,
 });
 
 export const requestMusic = () => dispatch => {

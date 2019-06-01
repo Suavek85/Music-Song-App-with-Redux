@@ -18,7 +18,8 @@ import {
   HIDE_POPUP,
   SHOW_POPUP,
   CHANGE_AUTOCOMPLETE,
-  AUTOCOMPLETE_SHOWS
+  AUTOCOMPLETE_SHOWS,
+  REQUEST_MUSIC_LOADING
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
 import {
@@ -254,8 +255,14 @@ export const handleMusicCards = (state = musicState, action = {}) => {
         }),
         isLoading: false
       });
+
+      case REQUEST_MUSIC_LOADING:
+      return Object.assign({}, state, {
+        musicStateItemList: musicState.musicStateItemList
+      });
     case REQUEST_MUSIC_ERROR:
       return Object.assign({}, state, {
+        musicStateItemList: musicState.musicStateItemList,
         isError: true,
         isLoading: false
       });

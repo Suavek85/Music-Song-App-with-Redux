@@ -15,6 +15,8 @@ const mapStateToProps = state => {
 };
 
 class App extends Component {
+ 
+
   render() {
     const { isLoading } = this.props;
     return (

@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from "react";
 import scrollDownSmooth from "../../components/Animations/Animations";
 import HeaderItem from "../../components/Header/HeaderItem";
+import { animateLogo } from "../../components/Icons/MusicPlayer/MusicPlayer";
 
 import { connect } from "react-redux";
 import {
   setInput,
   requestMusic,
   requestSpecificMusic,
+  requestMusicLoading,
   isCardShow,
   activateLoading,
   setAutocomplete,
@@ -31,6 +33,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(setAutocomplete(event.target.textContent)),
     onRequestMusic: () => dispatch(requestMusic()),
     onRequestSpecificMusic: input => dispatch(requestSpecificMusic(input)),
+    onRequestMusicLoading: () => dispatch(requestMusicLoading()),
     onCardShow: text => dispatch(isCardShow(text)),
     onActivateLoading: () => dispatch(activateLoading()),
     onShowAutocomplete: text => dispatch(showAutocomplete(text))
@@ -38,7 +41,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 class Header extends Component {
-  
+  componentDidMount() {
+    animateLogo();
+  }
+
   onAutocompleteHandler = event => {
     document.getElementById("search-input").value = event.target.textContent;
     this.props.onAutocompleteSelect(event);
@@ -53,6 +59,7 @@ class Header extends Component {
   onHeaderSearchHandler = () => {
     this.props.onActivateLoading();
     this.props.onCardShow(true);
+    this.props.onRequestMusicLoading();
     this.props.onRequestSpecificMusic(this.props.input);
     scrollDownSmooth();
   };
