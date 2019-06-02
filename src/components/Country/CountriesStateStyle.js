@@ -9,8 +9,7 @@ const wrapper = {
 };
 
 const wrapperBrazil = {
-  ...{ backgroundImage: `url(${BrazilBck})`, 
-  margin: "100px auto 50px auto" },
+  ...{ backgroundImage: `url(${BrazilBck})`, margin: "100px auto 50px auto" },
   ...wrapper
 };
 
@@ -43,9 +42,8 @@ const text = {
   marginBottom: "40px",
   color: "pink",
   fontWeight: "900",
-  lineHeight: "1, 5",
-
-}
+  lineHeight: "1, 5"
+};
 
 const textBr = {
   ...{ letterSpacing: "5px" },
@@ -124,7 +122,9 @@ export const countriesMain = [
     fadeRight: false,
     fadeLeft: true,
     button: false,
-    showSongs: true
+    showSongs: true,
+    message: false,
+    messageText: "Error"
   },
   {
     name: "USA",
@@ -163,7 +163,9 @@ export const countriesMain = [
     fadeRight: true,
     fadeLeft: false,
     button: false,
-    showSongs: true
+    showSongs: true,
+    message: false,
+    messageText: "Error"
   },
   {
     name: "Spain",
@@ -202,7 +204,9 @@ export const countriesMain = [
     fadeRight: false,
     fadeLeft: true,
     button: false,
-    showSongs: true
+    showSongs: true,
+    message: false,
+    messageText: "Error"
   }
 ];
 
@@ -213,25 +217,25 @@ export const countrySelected = [
     code: "",
     topSongs: [
       {
-        artist: "Artist",
-        track: "Track",
-        album: "Album",
+        artist: "Loading...",
+        track: "Loading...",
+        album: "Loading...",
         id: 0,
         number: 41,
         favClicked: false
       },
       {
-        artist: "Artist",
-        track: "Track",
-        album: "Album",
+        artist: "Loading...",
+        track: "Loading...",
+        album: "Loading...",
         id: 0,
         number: 42,
         favClicked: false
       },
       {
-        artist: "Artist",
-        track: "Track",
-        album: "Album",
+        artist: "Loading...",
+        track: "Loading...",
+        album: "Loading...",
         id: 0,
         number: 43,
         favClicked: false
@@ -244,6 +248,8 @@ export const countrySelected = [
     fadeRight: true,
     fadeLeft: false,
     button: true,
-    showSongs: false
+    showSongs: false,
+    message: false,
+    messageText: "Error"
   }
 ];

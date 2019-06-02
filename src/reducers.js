@@ -19,7 +19,10 @@ import {
   SHOW_POPUP,
   CHANGE_AUTOCOMPLETE,
   AUTOCOMPLETE_SHOWS,
-  REQUEST_MUSIC_LOADING
+  REQUEST_MUSIC_LOADING,
+  REQUEST_SELECTED_COUNTRY_LOADING,
+  REQUEST_SELECTED_COUNTRY_ERROR,
+  REQUEST_SELECTED_COUNTRY_SERVER_ERROR
 } from "./constants";
 import { musicState } from "./components/Card/CardState";
 import {
@@ -157,6 +160,32 @@ export const handleSelectedCountry = (state = countrySelected, action = {}) => {
           }
         }
       });
+    case REQUEST_SELECTED_COUNTRY_LOADING:
+      return update(state, {
+        0: {
+          showSongs: { $set: true },
+          message: { $set: false },
+          messageText: { $set: "Error." }
+        }
+      });
+    case REQUEST_SELECTED_COUNTRY_ERROR:
+      return update(state, {
+        0: {
+          showSongs: { $set: false },
+          message: { $set: true },
+          messageText: { $set: "Cannot find you country's name. Try again." }
+        }
+      });
+    case REQUEST_SELECTED_COUNTRY_SERVER_ERROR:
+      return update(state, {
+        0: {
+          showSongs: { $set: false },
+          message: { $set: true },
+          messageText: {
+            $set: "Ops, we seem to have a problem. Try again later."
+          }
+        }
+      });
     case TOGGLE_COUNTRY_SELECTED_FAV:
       return update(state, {
         $set: action.payload
@@ -256,7 +285,7 @@ export const handleMusicCards = (state = musicState, action = {}) => {
         isLoading: false
       });
 
-      case REQUEST_MUSIC_LOADING:
+    case REQUEST_MUSIC_LOADING:
       return Object.assign({}, state, {
         musicStateItemList: musicState.musicStateItemList
       });

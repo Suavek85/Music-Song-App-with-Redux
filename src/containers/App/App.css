@@ -16,6 +16,12 @@ h1 span {
   padding: 5px 15px 10px 15px;
 }
 
+h3 {
+  font-size: 30px;
+  color: pink;
+  font-weight: 900
+}
+
 /* Rotate effect */
 
 .hvr-icon {

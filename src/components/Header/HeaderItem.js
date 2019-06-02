@@ -2,7 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import Background from "../Images/music-black-white.jpg";
-import PinkMusicIcon from "../Icons/Logo/Logo";
 import DefaultUser from "../Icons/Profile/Profile";
 import Search from "../Search/Search";
 import Signin from "../Signin/Signin";
@@ -27,7 +26,7 @@ const HeaderItem = props => {
           <div className="bg-black-80 pb5 pb6-m pb7-l h-inherit">
             <nav className="dt w-100 mw8 center flex items-center justify-between">
               <div className="dtc w2 v-mid pa3">
-              <MusicPlayer />
+                <MusicPlayer />
               </div>
               <div className="dtc v-mid tr pa3 flex items-end justify-end">
                 <div

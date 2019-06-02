@@ -19,6 +19,8 @@ const CountryList = props => {
             fadeLeft={el.fadeLeft}
             button={el.button}
             showSongs={el.showSongs}
+            message={el.message}
+            messageText={el.messageText}
             searchChange={props.searchChange}
             buttonClick={props.buttonClick}
             onCountryFavClick={props.onCountryFavClick}

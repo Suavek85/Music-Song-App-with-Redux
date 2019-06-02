@@ -21,6 +21,8 @@ const CountriesList = props => {
             fadeRight={el.fadeRight}
             fadeLeft={el.fadeLeft}
             showSongs={el.showSongs}
+            message={el.message}
+            messageText={el.messageText}
             onCountryFavClick={props.onCountryFavClick}
             onOpenPopup={props.onOpenPopup}
           />

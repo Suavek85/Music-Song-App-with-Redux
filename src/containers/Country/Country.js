@@ -17,7 +17,9 @@ import {
   removeFav,
   requestCountry,
   requestSelectedCountry,
-  showPopup
+  showPopup,
+  requestSelectedCountryLoading,
+  requestSelectedCountryError
 } from "../../actions";
 
 const mapStateToProps = state => {
@@ -50,6 +52,10 @@ const mapDispatchToProps = dispatch => {
     onRequestCountries: (text, no) => dispatch(requestCountry(text, no)),
     onToggleCountryFav: text => dispatch(toggleCountryFav(text)),
     onRequestSelectedCountry: text => dispatch(requestSelectedCountry(text)),
+    onRequestSelectedCountryLoading: () =>
+      dispatch(requestSelectedCountryLoading()),
+    onRequestSelectedCountryError: () =>
+      dispatch(requestSelectedCountryError()),
     onToggleCountrySelectedFav: text =>
       dispatch(toggleCountrySelectedFav(text)),
     onShowPopup: (yes, artist, track) => dispatch(showPopup(yes, artist, track))
@@ -68,21 +74,21 @@ class Country extends Component {
   }
 
   onOpenPopup = event => {
-    console.log("open");
-    const artist =
-      event.target.previousSibling.previousSibling.innerHTML;
+    const artist = event.target.previousSibling.previousSibling.innerHTML;
     const track =
-      event.target.previousSibling.previousSibling
-        .previousSibling.previousSibling.innerHTML;
+      event.target.previousSibling.previousSibling.previousSibling
+        .previousSibling.innerHTML;
     this.props.onShowPopup(true, artist, track);
   };
 
   onCountryButtonClick = () => {
     //converting country name to country code
+    this.props.onRequestSelectedCountryLoading();
     const countryIndex = countryCodeArr.findIndex(el => {
       return el.name === this.props.inputCountry;
     });
     if (countryIndex === -1) {
+      this.props.onRequestSelectedCountryError();
       return;
     }
     const countryCode = countryCodeArr[countryIndex].code;

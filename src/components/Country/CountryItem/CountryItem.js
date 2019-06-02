@@ -20,6 +20,7 @@ const CountryItem = props => {
               <div>
                 <div>
                   <input
+                    id="specific-country"
                     style={props.textStyle}
                     onChange={props.searchChange}
                     placeholder="Try your country..."
@@ -28,7 +29,7 @@ const CountryItem = props => {
                 </div>
                 <p
                   onClick={props.buttonClick}
-                  className="f6 link dim ba bw1 ph4 pv2 mb2 dib hot-pink pointer tracked ttc "
+                  className="f6 link dim ba bw1 ph4 pv2 mb4 dib hot-pink pointer tracked ttc "
                 >
                   Go!
                 </p>
@@ -37,6 +38,7 @@ const CountryItem = props => {
               props.name
             )}
           </div>
+          {props.message ? <h3>{props.messageText}</h3> : null}
           {props.showSongs ? (
             <div>
               {[0, 1, 2].map(el => {

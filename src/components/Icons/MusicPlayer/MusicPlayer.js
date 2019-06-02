@@ -5,7 +5,7 @@ import { Power2, Bounce, Circ } from "gsap/TweenMax";
 export const animateLogo = () => {
   var tl = new TimelineMax();
   tl.delay(1.5)
-    .from("#background", 1.5, {
+    .from("#background", 1, {
       scaleY: 0,
       transformOrigin: "bottom",
       ease: Power2.easeOut
@@ -26,17 +26,17 @@ export const animateLogo = () => {
       transformOrigin: "center",
       ease: Bounce.easeOut
     })
-    .from("#left-string2", 0.6, {
+    .from("#left-string2", 0.5, {
       scaleY: 0,
       transformOrigin: "bottom",
       ease: Circ.easeOut,
-      delay: 0.4
+      delay: 0.2
     })
-    .from("#left-string3", 0.6, {
+    .from("#left-string3", 0.5, {
       scaleY: 0,
       transformOrigin: "bottom",
       ease: Circ.easeOut,
-      delay: 0.4
+      delay: 0.2
     })
 
     .from("#right-string1", 0.5, {
@@ -44,17 +44,17 @@ export const animateLogo = () => {
       transformOrigin: "center",
       ease: Bounce.easeOut
     })
-    .from("#right-string2", 0.6, {
+    .from("#right-string2", 0.5, {
       scaleY: 0,
       transformOrigin: "bottom",
       ease: Circ.easeOut,
-      delay: 0.4
+      delay: 0.2
     })
-    .from("#right-string3", 0.6, {
+    .from("#right-string3", 0.5, {
       scaleY: 0,
       transformOrigin: "bottom",
       ease: Circ.easeOut,
-      delay: 0.4
+      delay: 0.2
     });
 };
 

@@ -19,7 +19,10 @@ import {
   HIDE_POPUP,
   SHOW_POPUP,
   CHANGE_AUTOCOMPLETE,
-  AUTOCOMPLETE_SHOWS
+  AUTOCOMPLETE_SHOWS,
+  REQUEST_SELECTED_COUNTRY_LOADING,
+  REQUEST_SELECTED_COUNTRY_ERROR,
+  REQUEST_SELECTED_COUNTRY_SERVER_ERROR
 } from "./constants";
 import { genericUrl, specificUrl, specificCountryUrl } from "./containers/API";
 
@@ -54,7 +57,7 @@ export const setInputCountry = text => ({
 });
 
 export const requestMusicLoading = () => ({
-  type: REQUEST_MUSIC_LOADING,
+  type: REQUEST_MUSIC_LOADING
 });
 
 export const requestMusic = () => dispatch => {
@@ -92,13 +95,29 @@ export const requestSpecificMusic = input => dispatch => {
 };
 
 export const requestSelectedCountry = text => dispatch => {
-  axios.get(specificCountryUrl(text)).then(res => {
-    dispatch({
-      type: REQUEST_SELECTED_COUNTRY_SUCCESS,
-      payload: res
+  axios
+    .get(specificCountryUrl(text))
+    .then(res => {
+      dispatch({
+        type: REQUEST_SELECTED_COUNTRY_SUCCESS,
+        payload: res
+      });
+    })
+    .catch(error => {
+      console.log(error);
+      dispatch({
+        type: REQUEST_SELECTED_COUNTRY_SERVER_ERROR
+      });
     });
-  });
 };
+
+export const requestSelectedCountryLoading = () => ({
+  type: REQUEST_SELECTED_COUNTRY_LOADING
+});
+
+export const requestSelectedCountryError = () => ({
+  type: REQUEST_SELECTED_COUNTRY_ERROR
+});
 
 export const requestCountry = (text, no) => dispatch => {
   axios.get(specificCountryUrl(text)).then(res => {
