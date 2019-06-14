@@ -6,11 +6,13 @@ import { StyledSearchDefault } from "../../Icons/Search/Search";
 import { youTubeSearchUrl } from "../../../containers/API";
 
 const CountryItemText = props => {
+  const trackString = props.topSongs[props.el].track;
   return (
     <div className="mb4 ml5 tl flex items-center f4">
       <span style={props.circleStyle}>{props.el + 1}</span>
       <span className="white pl3 pr1 washed-red">
-        {props.topSongs[props.el].track}
+        {props.topSongs[props.el].track.slice(0,35)}
+        {trackString.length > 34 ? '...' : null}
       </span>
       <span className="white pr1"> by </span>
       <span className="white lightest-blue pr2">
