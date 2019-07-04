@@ -7,6 +7,7 @@ import { youTubeSearchUrl } from "../../../containers/API";
 
 const CountryItemText = props => {
   const trackString = props.topSongs[props.el].track;
+  const artistString = props.topSongs[props.el].artist;
   return (
     <div className="mb4 ml5 tl flex items-center f4">
       <span style={props.circleStyle}>{props.el + 1}</span>
@@ -16,7 +17,8 @@ const CountryItemText = props => {
       </span>
       <span className="white pr1"> by </span>
       <span className="white lightest-blue pr2">
-        {props.topSongs[props.el].artist}
+        {props.topSongs[props.el].artist.slice(0,30)}
+        {artistString.length > 29 ? '...' : null}
       </span>
       <span
         className="fav-wrapper grow-hov dib"

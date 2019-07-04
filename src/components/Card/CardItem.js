@@ -61,7 +61,7 @@ const CardItem = props => {
         >
           {props.addedToFav ? <GreyBin /> : null}
         </div>
-        <div className="tc">
+        <div className="tc pa3">
           <Logo style={logoStyle} />
           <h1 className="f3 mb2 pb3 dark-red">{props.track}</h1>
           <h2 className="f5 fw4 gray mt0">
