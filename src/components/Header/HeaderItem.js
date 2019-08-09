@@ -18,7 +18,7 @@ const HeaderItem = props => {
   const { favsArray, onSearchChange, headerSearch, onShowFavs, input } = props;
   return (
     <Router>
-      <header className="sans-serif mb5 vh-100">
+      <header className="sans-serif mb5 h-auto">
         <div
           className="cover bg-left bg-center-l h-inherit"
           style={backImageStyle}
