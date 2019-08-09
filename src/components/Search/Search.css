@@ -18,11 +18,13 @@
     border: 0;
     background: transparent;
     border-right: 1px solid white;
+    border-radius: 0;
 }
 
 .search input:focus {
     outline: 0;
     background: transparent;
+    border-radius: 0;
 }
 
 .search button {

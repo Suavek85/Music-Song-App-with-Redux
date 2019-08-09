@@ -18,26 +18,26 @@ const HeaderItem = props => {
   const { favsArray, onSearchChange, headerSearch, onShowFavs, input } = props;
   return (
     <Router>
-      <header className="sans-serif mb5 h-auto">
+      <header className="sans-serif mb5 h-auto w-100">
         <div
           className="cover bg-left bg-center-l h-inherit"
           style={backImageStyle}
         >
           <div className="bg-black-80 pb5 pb6-m pb7-l h-inherit">
-            <nav className="dt w-100 mw8 center flex items-center justify-between">
+            <nav className="dt mw8 center flex items-center justify-between">
               <div className="dtc w2 v-mid pa3">
                 <MusicPlayer />
               </div>
               <div className="dtc v-mid tr pa3 flex items-end justify-end">
                 <div
                   onClick={onShowFavs}
-                  className="relative f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 pointer"
+                  className="relative f6 fw4 hover-white no-underline white-70 dib-ns pv2 pointer"
                 >
                   FAV SONGS
                   <FavBadge countFavs={favsArray.length} />
                 </div>
                 <a
-                  className="f6 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3 pointer "
+                  className="f6 fw4 hover-white no-underline white-70 dib-ns pv2 ph3 pointer "
                   href="#charts"
                 >
                   CHARTS

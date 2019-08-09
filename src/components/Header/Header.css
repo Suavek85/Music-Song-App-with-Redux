@@ -7,3 +7,9 @@
     font-family: 'Montserrat', sans-serif;
     font-weight: 900;
 }
+
+@media screen and (max-width: 600px) {
+    .h1-clip {
+        font-size: 48px;
+    }
+  }

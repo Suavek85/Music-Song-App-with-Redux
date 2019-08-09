@@ -4,7 +4,7 @@ import CountryItem from "./CountryItem/CountryItem";
 const CountriesList = props => {
   return (
     <Fragment>
-      <h1 id="charts" className="f1 lh-title light-gray">
+      <h1 id="charts" className="lh-title light-gray">
         <span>Top songs in...</span>
       </h1>
       {props.countries.map(el => {
