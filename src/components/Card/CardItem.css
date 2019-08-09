@@ -1,0 +1,15 @@
+article {
+    width: 22%;
+}
+
+@media (max-width: 1200px) {
+    article {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    article {
+        width: 80%;
+    }
+}

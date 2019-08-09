@@ -14,6 +14,7 @@ import {
 } from "./CardItemStyle";
 import { CSSTransition } from "react-transition-group";
 import "../Animations/Fade.css";
+import "./CardItem.css";
 
 const CardItem = props => {
   return (
@@ -24,7 +25,7 @@ const CardItem = props => {
       timeout={700}
       unmountOnExit
     >
-      <article className=" w-20 w-40-m mh3 relative bg-near-white br3 pa2 pa4-ns mv5 ba b--black-10 shadow-4">
+      <article className="mh3 relative bg-near-white br3 pa2 pa4-ns mv5 ba b--black-10 shadow-4">
         <div style={iconsLeftWrapperStyle}>
           <div
             className="fav-wrapper grow-hov"

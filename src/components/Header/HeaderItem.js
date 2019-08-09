@@ -63,7 +63,7 @@ const HeaderItem = props => {
                 </div>
               </div>
             </nav>
-            <div className="tc-l mt4 mt5-m mt6-l ph3">
+            <div  className="flex flex-column items-center justify-center tc-l mt4 mt5-m mt6-l ph3">
               <CSSTransition
                 in
                 classNames="fade"

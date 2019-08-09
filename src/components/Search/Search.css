@@ -1,13 +1,17 @@
+.form__wrapper {
+    width: 30%;
+    margin: auto;
+}
+
 .search {
     height: 40px;
-    margin: 30px auto 0 0;
     background: #444;
     background: rgba(0, 0, 0, .2);
     border: 1px solid #fff;
 }
 
 .search input {
-    width: 370px;
+    width: 80%;
     padding: 10px 5px;
     text-align: center;
     float: left;
@@ -23,13 +27,11 @@
 }
 
 .search button {
-    position: relative;
-    float: right;
+    height: 38px;
+    width: 20%;
     border: 0;
     padding: 0;
     cursor: pointer;
-    height: 38px;
-    width: 120px;
     color: #fff;
     background: transparent;
 }
@@ -46,4 +48,23 @@
 
 .search button:focus {
     outline: 0;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1200px) {
+    .form__wrapper {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    .form__wrapper {
+        width: 80%;
+    }
+}
+@media (max-width: 400px) {
+    .form__wrapper {
+        width: 90%;
+    }
 }

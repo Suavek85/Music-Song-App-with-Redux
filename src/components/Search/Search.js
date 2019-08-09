@@ -5,13 +5,9 @@ import { Dropdown } from "./Dropdown";
 const Search = props => {
   return (
     <div
-      className="flex flex-column items-start"
-      style={{
-        width: "500px",
-        margin: "auto"
-      }}
+      className="flex flex-column items-start form__wrapper"
     >
-      <form className="search white-70 mw6" autoComplete="off" action="">
+      <form style={{width: "100%"}} className="search white-70" autoComplete="off" action="">
         <input
           type="search"
           onChange={props.searchChange}
