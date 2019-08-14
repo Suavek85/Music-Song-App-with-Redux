@@ -1,6 +1,7 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
 import CountryItemText from "./CountryItemText";
+import "./CountryItem.css";
 
 const CountryItem = props => {
   return (
@@ -11,7 +12,7 @@ const CountryItem = props => {
       right={props.fadeRight}
     >
       <div
-        className="cover w-60 w-90-m bg-left bg-center-l "
+        className="country_wrapper cover w-60 w-90-m bg-left bg-center-l "
         style={props.wrapperStyle}
       >
         <div className="bg-black-80 pb5 pb6-m pb7-l h-inherit">
@@ -35,7 +36,7 @@ const CountryItem = props => {
                 </p>
               </div>
             ) : (
-              props.name
+              <h3>{props.name}</h3>
             )}
           </div>
           {props.message ? <h3>{props.messageText}</h3> : null}

@@ -64,19 +64,19 @@ const CardItem = props => {
         </div>
         <div className="tc pa3">
           <Logo style={logoStyle} />
-          <h1 className="f3 mb2 pb3 dark-red">{props.track}</h1>
-          <h2 className="f5 fw4 gray mt0">
+          <p className="f3 mb2 pb3 dark-red">{props.track}</p>
+          <p className="f5 fw4 gray mt0">
             <span className="dark-red">
               Artist:
               <br />
             </span>
             <span>{props.artist} </span>
-          </h2>
-          <h2 className="f5 fw4 gray mt0">
+          </p>
+          <p className="f5 fw4 gray mt0">
             <span className="dark-red">Album:</span>
             <br />
             {props.album}
-          </h2>
+          </p>
         </div>
       </article>
     </CSSTransition>

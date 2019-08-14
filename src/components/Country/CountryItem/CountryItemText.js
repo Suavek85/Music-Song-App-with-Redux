@@ -4,19 +4,20 @@ import RedFavoriteEmpty from "../../Icons/FavoriteIcon/FavoriteIcon";
 import { YoutubeIconWhite } from "../../Icons/Youtube/Youtube";
 import { StyledSearchDefault } from "../../Icons/Search/Search";
 import { youTubeSearchUrl } from "../../../containers/API";
+import "./CountryItem.css";
 
 const CountryItemText = props => {
   const trackString = props.topSongs[props.el].track;
   const artistString = props.topSongs[props.el].artist;
   return (
-    <div className="mb4 ml5 tl flex items-center f4">
-      <span style={props.circleStyle}>{props.el + 1}</span>
+    <div className="country__song-line mb4 ml5 tl flex items-center f4">
+      <div className="country__line-breaker"><span style={props.circleStyle}>{props.el + 1}</span></div>
       <span className="white pl3 pr1 washed-red">
         {props.topSongs[props.el].track.slice(0,35)}
         {trackString.length > 34 ? '...' : null}
       </span>
       <span className="white pr1"> by </span>
-      <span className="white lightest-blue pr2">
+      <span className="white lightest-blue pr2 country__line-breaker">
         {props.topSongs[props.el].artist.slice(0,30)}
         {artistString.length > 29 ? '...' : null}
       </span>

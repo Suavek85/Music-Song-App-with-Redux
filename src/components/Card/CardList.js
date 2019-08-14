@@ -6,13 +6,13 @@ const CardList = props => {
     return (
       <Fragment>
         {props.isError ? (
-          <h1 className="lh-title light-gray">
+          <h2 className="lh-title light-gray">
             Oops an error. We seem to be too busy now. Try reloading the page.
-          </h1>
+          </h2>
         ) : (
-          <h1 className="lh-title light-gray">
+          <h2 className="lh-title light-gray">
             <span>Top songs by "{props.input}"</span>
-          </h1>
+          </h2>
         )}
         <div className="flex flex-wrap relative justify-center">
           {props.music.map(el => {

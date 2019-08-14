@@ -4,8 +4,8 @@ import EsBck from "./images/spain.jpg";
 import GenBck from "./images/generic.jpg";
 
 const wrapper = {
-  height: "350px",
-  backgroundAttachment: "fixed"
+  height: "380px",
+  backgroundAttachment: "fixed",
 };
 
 const wrapperBrazil = {
@@ -37,11 +37,9 @@ const wrapperRandom = {
 };
 
 const text = {
-  fontSize: "50px",
-  paddingTop: "30px",
-  marginBottom: "40px",
+  paddingTop: "15px",
+  marginBottom: "30px",
   color: "pink",
-  fontWeight: "900",
   lineHeight: "1, 5"
 };
 
@@ -67,8 +65,8 @@ const textXx = {
   width: "90%",
   textAlign: "center",
   outline: "none",
-  fontWeight: "900",
-  fontSize: "50px",
+  fontWeight: "100",
+  fontSize: "3rem",
   paddingTop: "20px",
   margin: "auto"
 };

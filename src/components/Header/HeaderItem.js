@@ -8,7 +8,6 @@ import Signin from "../Signin/Signin";
 import Signup from "../Signin/Signup";
 import FavBadge from "../FavBadge/FavBadge";
 import MusicPlayer from "../Icons/MusicPlayer/MusicPlayer";
-import "./Header.css";
 import "../Animations/Fade.css";
 
 const HeaderItem = props => {
@@ -63,7 +62,7 @@ const HeaderItem = props => {
                 </div>
               </div>
             </nav>
-            <div  className="flex flex-column items-center justify-center tc-l mt4 mt5-m mt6-l ph3">
+            <div className="flex flex-column items-center justify-center tc-l mt4 mt5-m mt6-l ph3">
               <CSSTransition
                 in
                 classNames="fade"
@@ -73,10 +72,11 @@ const HeaderItem = props => {
               >
                 <h1 className="h1-clip">SONG FINDER</h1>
               </CSSTransition>
-
-              <h2 className="fw1 f3 washed-yellow mt3 mb4">
-                Find top 3 tracks of your artist:
-              </h2>
+            
+                <p style={{letterSpacing: "1.1px"}} className="fw1 f3 washed-yellow mt3 mb4">
+                  Find top 3 tracks of your artist:
+                </p>
+              
               <Search
                 searchChange={onSearchChange}
                 headerSearch={headerSearch}

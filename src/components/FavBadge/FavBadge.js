@@ -20,17 +20,17 @@ const FavBadge = props => {
         cy="15"
         r="9"
         stroke="white"
-        stroke-width="1"
+        strokeWidth="1"
         fill="url(#grad1)"
       />
       <text
         fill="#ffffff"
-        font-size="11"
-        font-family="Verdana"
+        fontSize="11"
+        fontFamily="Verdana"
         x="50%"
         y="55%"
-        dominant-baseline="middle"
-        text-anchor="middle"
+        dominantBaseline="middle"
+        textAnchor="middle"
       >
         {props.countFavs}
       </text>
