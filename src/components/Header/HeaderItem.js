@@ -12,7 +12,9 @@ import "../Animations/Fade.css";
 
 const HeaderItem = props => {
   const backImageStyle = {
-    backgroundImage: `url(${Background})`
+    backgroundImage: `url(${Background})`,
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed"
   };
   const { favsArray, onSearchChange, headerSearch, onShowFavs, input } = props;
   return (
@@ -72,11 +74,14 @@ const HeaderItem = props => {
               >
                 <h1 className="h1-clip">SONG FINDER</h1>
               </CSSTransition>
-            
-                <p style={{letterSpacing: "1.1px"}} className="fw1 f3 washed-yellow mt3 mb4">
-                  Find top 3 tracks of your artist:
-                </p>
-              
+
+              <p
+                style={{ letterSpacing: "1.1px" }}
+                className="fw1 f3 washed-yellow mt3 mb4"
+              >
+                Find top 3 tracks of your artist:
+              </p>
+
               <Search
                 searchChange={onSearchChange}
                 headerSearch={headerSearch}
