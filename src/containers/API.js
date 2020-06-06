@@ -1,4 +1,4 @@
-const apiKey = "22d91306931ee5a074eb08a71662cc98";
+const apiKey = process.env.REACT_APP_API_KEY
 const corsUrl = 'https://cors-anywhere.herokuapp.com/'
 
 export const genericUrl = `${corsUrl}http://api.musixmatch.com/ws/1.1/track.search?q_artist=justin bieber&page_size=3&page=1&s_track_rating=desc & apikey=${apiKey}`;
