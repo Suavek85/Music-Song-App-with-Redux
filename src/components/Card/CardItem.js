@@ -4,7 +4,7 @@ import RedFavoriteEmpty from "../Icons/FavoriteIcon/FavoriteIcon";
 import RedFavoriteFull from "../Icons/FavoriteIconFull/FavoriteIconFull";
 import GreyBin from "../Icons/BinIcon/BinIcon";
 import { YoutubeIcon } from "../Icons/Youtube/Youtube";
-import { SearchDefault } from "../Icons/Search/Search";
+//import { SearchDefault } from "../Icons/Search/Search";
 import { youTubeSearchUrl } from "../../containers/API";
 import {
   rightStyle,
@@ -35,13 +35,16 @@ const CardItem = props => {
           >
             {props.favClicked ? <RedFavoriteFull /> : <RedFavoriteEmpty />}
           </div>
+          { /*
           <div
-            style={iconStyle}
-            className="fav-wrapper grow-hov"
-            onClick={props.onOpenPopup}
-          >
-            <YoutubeIcon />
-          </div>
+          style={iconStyle}
+          className="fav-wrapper grow-hov"
+          onClick={props.onOpenPopup}
+        >
+          <YoutubeIcon />
+        </div>
+          */}
+
           <div className="grow-hov" style={iconStyle}>
             <a
               href={youTubeSearchUrl(props.track, props.artist)}
@@ -49,7 +52,7 @@ const CardItem = props => {
               rel="noopener noreferrer"
               className="fav-wrapper grow-hov"
             >
-              <SearchDefault />
+              <YoutubeIcon />
             </a>
           </div>
         </div>

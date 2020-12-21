@@ -4,12 +4,13 @@ export const iconsLeftWrapperStyle = {
   top: "10px",
   left: "10px",
   width: "110px",
-  justifyContent: "space-around"
+  //justifyContent: "space-around"
 };
 
 export const iconStyle = {
   height: "32px",
   width: "32px",
+  marginRight: "5px"
 };
 
 export const rightStyle = {

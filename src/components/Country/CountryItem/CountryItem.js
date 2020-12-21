@@ -1,7 +1,6 @@
 import React from "react";
 import Fade from "react-reveal/Fade";
 import CountryItemText from "./CountryItemText";
-import "./CountryItem.css";
 
 const CountryItem = props => {
   return (
