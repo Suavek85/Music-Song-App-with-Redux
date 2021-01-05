@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://suavek85.github.io/Music-Song-App-with-Redux/",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "gh-pages": "^2.0.1",
